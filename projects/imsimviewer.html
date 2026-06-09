@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ImSimViewer - 정동주</title>
+    <link rel="stylesheet" href="../styles.css?v=66" />
+  </head>
+  <body>
+    <header class="site-nav">
+      <a class="brand" href="../index.html">정동주 포트폴리오</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html">프로젝트</a>
+        <a href="personal-learning.html">개인 학습</a>
+        <a href="../contact.html">연락처</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <div>
+          <p class="kicker">2026.01 - 2026.05 / Unreal Visualization Platform</p>
+          <h1>ImSimViewer</h1>
+          <p>상부 요청을 바탕으로 Physical AI 시뮬레이션 결과를 Unreal 월드에서 확인하기 위한 Viewer 구성을 설계하고 구현한 프로젝트. 핵심은 특정 데모 하나가 아니라, 외부 시뮬레이터 데이터가 들어왔을 때 맵, Entity, View, 환경을 설정 기반으로 확장할 수 있는 시각화 플랫폼 구조를 만드는 것</p>
+          <div class="project-facts">
+            <div><span>역할</span> 단독 개발</div>
+            <div><span>엔진</span> Unreal C++</div>
+            <div><span>연동</span> ROS2 Humble · ZMQ · glTF · XML</div>
+          </div>
+        </div>
+        <aside class="case-meta">
+          <div><span>성격</span><strong>사내 자체 프로젝트</strong></div>
+          <div><span>목표</span><strong>시뮬레이션 시각화 플랫폼</strong></div>
+          <div><span>범위</span><strong>구조 설계 · 구현 · 로컬 검증</strong></div>
+        </aside>
+      </section>
+
+      <figure class="case-main-image">
+        <img src="../assets/imsimviewer-demo.png" alt="ImSimViewer 시연 화면" />
+      </figure>
+
+      <section class="case-lead flat">
+        <article class="lead-card dark">
+          <span>작업 관점</span>
+          <strong>요청사항을 Viewer 구조로 구체화</strong>
+          <p>Physical AI 시뮬레이션 결과를 Unreal에서 확인하기 위한 요청을 바탕으로, 맵·Entity·View·환경 제어가 설정과 데이터 흐름에 따라 동작하는 Viewer 구조로 정리</p>
+        </article>
+        <div class="lead-points">
+          <div>
+            <strong>설정 기반 구성</strong>
+            <p>맵, Entity, glTF, View 정보를 XML 설정으로 분리해 패키지 이후 확장 가능하도록 구성</p>
+          </div>
+          <div>
+            <strong>통신 전제 대응</strong>
+            <p>ROS2/ZMQ 실시간 테스트가 제한된 상황에서 로컬 UI와 기록 데이터 재생으로 처리 흐름 검증</p>
+          </div>
+          <div>
+            <strong>시각화 품질 확보</strong>
+            <p>렌더링 옵션, 플러그인, 샘플 파티클 편집을 조합해 차량·기상·해상·수중 표현을 구성</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="direction-section">
+        <div class="block-heading">
+          <p class="kicker">작업 방향</p>
+        </div>
+        <div class="flow-diagram process-strip">
+          <div>
+            <span>01</span>
+            <strong>설정 로드</strong>
+            <p>XML에서 map, view, entity, glTF 정보를 읽고 런타임 스폰 준비</p>
+          </div>
+          <div>
+            <span>02</span>
+            <strong>ROS2Bridge</strong>
+            <p>rclUE를 Windows Unreal 환경에 맞게 재구성하고 rcl C API 기반 송수신 구조 준비</p>
+          </div>
+          <div>
+            <span>03</span>
+            <strong>제어 서비스</strong>
+            <p>월드, 시뮬레이션, Entity, 환경 제어 매니저가 메시지를 처리</p>
+          </div>
+          <div>
+            <span>04</span>
+            <strong>ZMQ 차량 처리</strong>
+            <p>차량 텔레메트리로 이동, 물리 상태, 주행 효과를 반영</p>
+          </div>
+          <div>
+            <span>05</span>
+            <strong>환경 시각화</strong>
+            <p>렌더링 옵션, 날씨, 차량 효과, 해상/수중 표현을 Unreal 월드에 반영</p>
+          </div>
+          <div>
+            <span>06</span>
+            <strong>로컬 검증</strong>
+            <p>실시간 연동 전 단계에서 UI와 기록 데이터 재생으로 동작 흐름 확인</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="work-lead">
+        <p class="kicker">담당 상세</p>
+        <h2>구현 상세</h2>
+        <p>ROS2Bridge, 제어 서비스, 차량 효과, 환경 제어, 해상/수중 검증으로 나누어 정리</p>
+      </section>
+
+      <section class="case-section">
+        <h2>ROS2Bridge / 제어 서비스</h2>
+        <p class="case-intro">ROS2Bridge 플러그인을 기반으로 월드, 시뮬레이션, Entity, 환경 상태를 처리하는 서비스와 매니저 클래스를 구성</p>
+        <figure class="case-media contain architecture-media">
+          <img src="../assets/imsimviewer-architecture.svg?v=2" alt="ImSimViewer 구조도" />
+          <figcaption>Viewer 설정과 Entity 처리 구조</figcaption>
+        </figure>
+        <div class="case-list">
+          <div class="case-row">
+            <span>ROS2Bridge</span>
+            <p>rclUE 기반 구조를 Windows Unreal 환경에 맞게 재구성. C++ symbol mangling 문제로 rclcpp 대신 rcl C API를 직접 사용하고, 반복 사용성을 보완하기 위해 매크로 구성을 준비</p>
+          </div>
+          <div class="case-row">
+            <span>Node 구조</span>
+            <p>액터에 부착하는 컴포넌트 단위 노드와 게임 인스턴스 단위 글로벌 노드를 제공. rclUE에 없던 글로벌 ROS Node 기능을 보완</p>
+          </div>
+          <div class="case-row">
+            <span>메시지 호환</span>
+            <p>표준 ROS2 메시지와 커스텀 메시지 패키지(simul_msgs)를 사용할 수 있도록 구성하고, 메시지 정의와 노드 사용 절차를 매뉴얼로 정리</p>
+          </div>
+          <div class="case-row">
+            <span>제어 서비스</span>
+            <p>월드/시뮬레이션 제어, Entity 컨트롤, 날씨/환경 컨트롤 서비스를 구성하고 각 메시지를 매니저 클래스에서 처리</p>
+          </div>
+          <div class="case-row">
+            <span>설정 로드</span>
+            <p>ig config.xml, entity registry.xml로 맵, View, Entity, glTF 정보와 기타 옵션을 정의해 패키지 이후에도 시각화 구성을 교체할 수 있도록 구성</p>
+          </div>
+          <div class="case-row">
+            <span>런타임 스폰</span>
+            <p>glTFRuntime 기반으로 Entity 모델을 로드하고, Entity/ViewActor 클래스를 통해 월드에 배치. glTF 모델 제작 가이드 문서 제공</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>ZMQ / 차량 효과</h2>
+        <figure class="case-media pair">
+          <div>
+            <img src="../assets/imsimviewer-vehicle-vfx.png" alt="ImSimViewer 차량 주행 효과" />
+            <img src="../assets/provided/imsim-vehicle-snow.png" alt="ImSimViewer 눈길 차량 효과" />
+          </div>
+          <figcaption>차량 텔레메트리와 지형 조건별 주행 효과 검증 화면</figcaption>
+        </figure>
+        <div class="case-list">
+          <div class="case-row">
+            <span>ZMQ Telemetry</span>
+            <p>차량 텔레메트리 포맷을 기준으로 이동 샘플 데이터를 파일 재생 방식으로 재현하고, 차량 이동 처리 경로를 검증</p>
+          </div>
+          <div class="case-row">
+            <span>Vehicle VFX</span>
+            <p>주행, 슬립, 드리프트 활성 여부와 강도/방향을 판단해 Tire Trail, 지형/눈/비 조건별 차량 효과를 적용</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>환경 제어 / 렌더링</h2>
+        <figure class="case-media environment-gallery">
+          <div>
+            <img src="../assets/provided/imsim-environment-control-crop.png" alt="ImSimViewer 환경 제어 UI" />
+            <img src="../assets/imsimviewer-environment.png" alt="ImSimViewer 환경 화면" />
+            <img src="../assets/imsimviewer-lighting.png" alt="ImSimViewer 라이팅 샘플" />
+          </div>
+          <figcaption>환경 제어 패널, Unreal 월드 반영, 라이팅/반사 품질 확인 화면</figcaption>
+        </figure>
+        <div class="case-list">
+          <div class="case-row">
+            <span>환경 제어</span>
+            <p>로컬 UI로 시간, 기상, 풍속, 안개, 재질 젖음/적설/먼지 상태를 조정하고 월드 환경에 반영</p>
+          </div>
+          <div class="case-row">
+            <span>렌더링 옵션</span>
+            <p>Lumen, Nanite, VSM 기준 렌더링 품질 옵션을 조정해 시각화 플랫폼에서 필요한 품질과 성능 기준을 확인</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>해상 / 수중 환경 검증</h2>
+        <p class="case-intro">Unreal Viewer에서 수면, 수중 카메라, 깊이별 분위기, 잠수정 조작, 대형 선박 부력까지 다룰 수 있는지 확인</p>
+        <figure class="case-media marine-gallery">
+          <div>
+            <img src="../assets/provided/imsim-marine-carrier.png" alt="ImSimViewer 대형 선박 해상 검증" />
+            <img src="../assets/provided/imsim-underwater-rov.png" alt="ImSimViewer 수중 ROV 환경" />
+            <img src="../assets/provided/imsim-underwater-dark.png" alt="ImSimViewer 깊이별 수중 환경" />
+          </div>
+          <figcaption>해상 부력, 수중 ROV 제어, 깊이별 수중 분위기 검증 화면</figcaption>
+        </figure>
+        <div class="marine-notes">
+          <article>
+            <h3>수면과 수중 표현 구성</h3>
+            <p>UE Water Plugin과 Ultra Dynamic Sky 플러그인으로 수면, 수중 카메라, 기상/안개 기반 표현을 구성. Caustics와 God Ray는 플러그인 효과를 활용하고, 화면 일렁임은 별도 Post Process 로직으로 추가</p>
+          </article>
+          <article>
+            <h3>깊이별 수중 분위기</h3>
+            <p>카메라의 수면 대비 깊이를 기준으로 색 채널별 감쇠율 차등 원리를 적용해 깊이별 수중 분위기를 조정. 수면 위 이동, Pawn 전환, 종료 시 변경 값을 원래 상태로 복원</p>
+          </article>
+          <article>
+            <h3>잠수정과 부력 검증</h3>
+            <p>HoloOcean을 통합해 HoloOcean agent 기반 잠수정 조종과 센서 연동을 테스트. Water Plugin 부력 컴포넌트와 질량, 선/각속도 damping 값을 조절해 구축함/항공모함급 선박 모의 테스트 진행</p>
+          </article>
+          <article>
+            <h3>확인한 한계</h3>
+            <p>UE Water Plugin을 사용할 경우 underwater Post Process가 반투명 표현과 light scattering을 가리는 문제가 있어, 관련 보정은 추가 개발 과제로 정리</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="case-section constraints-section">
+        <h2>제약과 대응</h2>
+        <div class="case-list compact">
+          <div class="case-row structured-row">
+            <span>AI Agent 활용</span>
+            <div class="row-points">
+              <p><strong>활용</strong>구조 설계, 구현 순서 정리, 코드 검토, 테스트/버그 수정 보조</p>
+              <p><strong>목적</strong>개발 속도와 검토 밀도 보완</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="next-link">
+        <a class="pill" href="../index.html#immersivecast">이머시브캐스트 프로젝트</a>
+        <a class="pill dark" href="rio.html">다음 프로젝트</a>
+      </nav>
+    </main>
+  </body>
+</html>

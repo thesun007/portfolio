@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>스마트 팩토리 VR 디지털 트윈 - 정동주</title>
+    <link rel="stylesheet" href="../styles.css?v=70" />
+  </head>
+  <body>
+    <header class="site-nav">
+      <a class="brand" href="../index.html">정동주 포트폴리오</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html">프로젝트</a>
+        <a href="personal-learning.html">개인 학습</a>
+        <a href="../contact.html">연락처</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <div>
+          <p class="kicker">2024.10 - 2025.12 / Unreal VR Digital Twin</p>
+          <h1>스마트 팩토리 VR 디지털 트윈</h1>
+          <p>회사 자체 VR 멀티버스 클라이언트를 확장해 실제 공장 데이터를 로봇, 아바타, 제조 설비 상태로 동기화한 Unreal 클라이언트 작업</p>
+          <div class="project-facts">
+            <div><span>역할</span> VR 멀티버스 클라이언트</div>
+            <div><span>범위</span> 수신 · 파싱 · 상태 관리 · Actor/UI 반영</div>
+            <div><span>결과</span> 실제 공장 데이터 연동 및 과제 시연 완료</div>
+          </div>
+        </div>
+        <aside class="case-meta">
+          <div><span>개발</span><strong>클라이언트 1명 · 서버 1명</strong></div>
+          <div><span>사업 기간</span><strong>2024.10 - 2025.12</strong></div>
+          <div><span>플랫폼</span><strong>회사 자체 VR 멀티버스</strong></div>
+        </aside>
+      </section>
+
+      <section class="media-strip two">
+        <img src="../assets/provided/smart-factory-lobby.png" alt="스마트 팩토리 VR 로비 화면" />
+        <img src="../assets/provided/smart-factory-factory.png" alt="스마트 팩토리 제조 공장 맵" />
+      </section>
+
+      <section class="factory-overview">
+        <p class="kicker">전체 구조</p>
+        <h2>공장 데이터가 VR 멀티버스 클라이언트에 반영되는 구조</h2>
+        <p>서버가 실제 공장 raw 데이터를 약속된 JSON 형태로 정제해 송신하고, 기존 VR 멀티버스 클라이언트는 이를 받아 다중 사용자가 확인할 수 있는 디지털 트윈 상태로 반영</p>
+        <div class="factory-system-map">
+          <div>
+            <span>공장</span>
+            <strong>실제 공장 데이터</strong>
+            <p>로봇, 아바타, 제조 설비 raw 데이터</p>
+          </div>
+          <div>
+            <span>서버</span>
+            <strong>데이터 정제 / 송신</strong>
+            <p>사전에 약속된 JSON 포맷으로 변환</p>
+          </div>
+          <div class="owned">
+            <span>클라이언트</span>
+            <strong>VR 멀티버스 클라이언트</strong>
+            <p>WebSocket 수신, 파싱, 상태 관리, Actor/UI 반영 담당</p>
+          </div>
+          <div>
+            <span>표현</span>
+            <strong>디지털 트윈 상태 표시</strong>
+            <p>여러 사용자가 같은 월드에서 로봇, 아바타, 설비 상태 확인</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section full-section">
+        <p class="kicker">클라이언트 구성 요소</p>
+        <div class="flow-diagram process-strip">
+          <div>
+            <span>객체 분류</span>
+            <strong>이동 객체와 고정 설비 분리</strong>
+            <p>로봇/아바타는 Transform 동기화, 기계 설비는 작동시간/상태/센서값 동기화</p>
+          </div>
+          <div>
+            <span>데이터 흐름</span>
+            <strong>수신 → 파싱 → 관리 → 렌더링</strong>
+            <p>WebSocket 문자열을 JSON 데이터로 변환하고 관리 매니저에서 타입별 처리</p>
+          </div>
+          <div>
+            <span>응답 처리</span>
+            <strong>Echo와 Complete 응답</strong>
+            <p>Echo로 전송시간을 추정하고 Complete로 렌더링 반영 완료 시점을 보내 응답속도 검증에 대응</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section full-section">
+        <p class="kicker">클라이언트 동작 흐름</p>
+        <ol class="client-flow">
+          <li>
+            <span>01</span>
+            <strong>WebSocket 수신</strong>
+            <p>서버가 빠르게 전달하는 공장 상태 JSON 문자열 수신</p>
+          </li>
+          <li>
+            <span>02</span>
+            <strong>Echo 응답</strong>
+            <p>메시지 단위 왕복 전송시간을 추정하기 위해 수신 직후 Echo Response 반환</p>
+          </li>
+          <li>
+            <span>03</span>
+            <strong>파싱 / 관리</strong>
+            <p>수집 문자열을 객체 데이터로 변환하고 타입별 관리 매니저로 전달</p>
+          </li>
+          <li>
+            <span>04</span>
+            <strong>상태 반영</strong>
+            <p>게임 스레드 타임에 수집된 데이터 중 마지막 상태를 Actor와 UI에 반영</p>
+          </li>
+          <li>
+            <span>05</span>
+            <strong>Complete 응답</strong>
+            <p>렌더링 반영 완료 시점에 Complete Response를 보내 응답속도 검증에 대응</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="case-section full-section smart-response">
+        <p class="kicker">응답 처리 설계</p>
+        <h2>렌더링 반영 시간을 검증하기 위한 Echo / Complete 분리</h2>
+        <div class="response-layout">
+          <div>
+            <strong>왜 필요한가</strong>
+            <p>서버가 보낸 공장 상태가 클라이언트에서 실제 렌더링 반영되기까지 걸린 시간을 검증해야 했고, 단순 왕복 통신 시간과 렌더링 처리 시간을 분리할 필요가 있었다.</p>
+          </div>
+          <div>
+            <strong>Echo Response</strong>
+            <p>메시지를 받은 직후 반환해 왕복 전송시간을 추정. 이후 Complete 응답 시간에서 전송시간 영향을 빼고 실제 반영 시간을 계산하는 기준으로 사용.</p>
+          </div>
+          <div>
+            <strong>Complete Response</strong>
+            <p>게임 스레드에서 수집 데이터 중 마지막 상태를 Actor/UI에 반영한 뒤 반환. 클라이언트 처리와 렌더링 반영 완료 시점을 서버가 확인할 수 있게 구성.</p>
+          </div>
+          <div>
+            <strong>엔진 수정 이유</strong>
+            <p>Unreal WebSocket 수신이 게임 스레드에서 여러 메시지를 배열 단위로 처리해 메시지 단위 Echo 반환이 어려웠고, 응답속도 검증 요구에 맞춰 수신 처리 일부를 수정.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section full-section">
+        <p class="kicker">구현 상세</p>
+        <h2>Unreal 클라이언트 구현 내용</h2>
+        <div class="case-list">
+          <div class="case-row">
+            <span>WebSocket</span>
+            <p>Receiver/Sender, JSON Parser, 데이터 관리 매니저 개발. 수신 데이터 타입에 따라 이동 객체와 고정 설비 처리 분리</p>
+          </div>
+          <div class="case-row">
+            <span>이동 객체</span>
+            <p>로봇과 아바타 타입의 Transform 데이터를 받아 Unreal 월드의 위치와 회전 상태로 동기화</p>
+          </div>
+          <div class="case-row">
+            <span>고정 설비</span>
+            <p>기계마다 달라지는 작동시간, 상태, 센서값 데이터를 UI/Actor 상태로 반영</p>
+          </div>
+          <div class="case-row">
+            <span>플랫폼 확장</span>
+            <p>회사 자체 VR 멀티버스 클라이언트의 AWS 서버 월드 접속 구조를 활용해, 여러 사용자가 같은 월드에서 공장 상태를 확인하는 형태로 확장</p>
+          </div>
+          <div class="case-row">
+            <span>검증</span>
+            <p>실제 공장 데이터 연동과 과제 완료 시연 테스트 진행. 서버와 약속한 JSON 포맷 기준으로 객체 상태 반영과 응답 처리 흐름 확인</p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="next-link">
+        <a class="pill" href="rio.html">이전</a>
+        <a class="pill dark" href="fire-training.html">다음 프로젝트</a>
+      </nav>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">ImSimViewer 런타임 소유 구조</title>
+  <desc id="desc">코어, 제어 액터, 런타임 객체, Entity 컴포넌트, 지원 계층을 런타임 스폰 순서 중심으로 정리한 구조도</desc>
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .label { font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif; fill: #24303a; }
+      .title { font-size: 26px; font-weight: 800; letter-spacing: -.2px; }
+      .group-title { font-size: 23px; font-weight: 800; }
+      .box-title { font-size: 22px; font-weight: 800; }
+      .box-sub { font-size: 17px; font-weight: 600; fill: #707b83; }
+      .caption { font-size: 18px; font-weight: 600; fill: #6d747a; }
+      .teal { fill: #087b78; }
+      .gray { fill: #5f6870; }
+      .core { fill: #eef3f4; stroke: #263545; stroke-width: 3; }
+      .control { fill: #eef8fd; stroke: #2d78b7; stroke-width: 3; }
+      .runtime { fill: #eef8f7; stroke: #0c8785; stroke-width: 3; }
+      .component { fill: #fff8ec; stroke: #e99a23; stroke-width: 3; }
+      .support { fill: #f1f0fb; stroke: #7565c9; stroke-width: 3; }
+      .ui { fill: #ecfbfb; stroke: #15a6aa; stroke-width: 3; }
+      .plugin { fill: #f3f5f6; stroke: #6a737a; stroke-width: 3; }
+      .unit { fill: #f3f5f6; stroke: #6a737a; stroke-width: 3; }
+      .box { fill: #fff; stroke-width: 2.2; rx: 4; }
+      .core-box { stroke: #263545; }
+      .control-box { stroke: #2d78b7; }
+      .runtime-box { stroke: #0c8785; }
+      .component-box { stroke: #e99a23; }
+      .support-box { stroke: #7565c9; }
+      .ui-box { stroke: #15a6aa; }
+      .plugin-box { stroke: #6a737a; }
+      .arrow { stroke: #646e76; stroke-width: 0; fill: #646e76; }
+    </style>
+  </defs>
+  <rect class="bg" width="1600" height="900"/>
+
+  <rect x="28" y="36" width="18" height="18" class="teal"/>
+  <text x="58" y="56" class="label title" fill="#087b78">런타임 소유 구조 (스폰 순서)</text>
+
+  <rect x="1048" y="36" width="18" height="18" class="gray"/>
+  <text x="1078" y="56" class="label title" fill="#5f6870">지원 계층</text>
+
+  <g>
+    <rect x="24" y="86" width="990" height="132" rx="10" class="core"/>
+    <text x="52" y="123" class="label group-title">코어 · 수명주기 (GI / World)</text>
+    <rect x="44" y="150" width="305" height="52" class="box core-box"/>
+    <text x="196" y="178" text-anchor="middle" class="label box-title">IGGameMode</text>
+    <text x="196" y="198" text-anchor="middle" class="label box-sub">Control Actor 스폰</text>
+    <rect x="370" y="150" width="305" height="52" class="box core-box"/>
+    <text x="522" y="178" text-anchor="middle" class="label box-title">IGControlSubsystem</text>
+    <text x="522" y="198" text-anchor="middle" class="label box-sub">ROS2 글로벌 노드 · GI 수명</text>
+    <rect x="696" y="150" width="305" height="52" class="box core-box"/>
+    <text x="848" y="178" text-anchor="middle" class="label box-title">IGPlayerController</text>
+    <text x="848" y="198" text-anchor="middle" class="label box-sub">입력 · 뷰 · 패널 · ESC</text>
+  </g>
+
+  <polygon points="500,236 540,236 540,270 562,270 520,306 478,270 500,270" class="arrow"/>
+  <text x="556" y="266" class="label caption">GameMode가 제어 액터를 스폰</text>
+
+  <g>
+    <rect x="24" y="302" width="990" height="120" rx="10" class="control"/>
+    <text x="52" y="340" class="label group-title" fill="#2d78b7">제어 액터 (ROS2 서비스)</text>
+    <rect x="44" y="362" width="470" height="50" class="box control-box"/>
+    <text x="279" y="390" text-anchor="middle" class="label box-title">EntityControlActor</text>
+    <text x="279" y="409" text-anchor="middle" class="label box-sub">Entity/View 서비스 · ROS2Bridge 호출</text>
+    <rect x="532" y="362" width="470" height="50" class="box control-box"/>
+    <text x="767" y="390" text-anchor="middle" class="label box-title">EnvironmentControlActor</text>
+    <text x="767" y="409" text-anchor="middle" class="label box-sub">Weather · Atmosphere · TimeOfDay</text>
+  </g>
+
+  <polygon points="500,444 540,444 540,478 562,478 520,514 478,478 500,478" class="arrow"/>
+  <text x="556" y="474" class="label caption">OnEntitySpawned ▸ Entity 생성</text>
+
+  <g>
+    <rect x="24" y="510" width="990" height="120" rx="10" class="runtime"/>
+    <text x="52" y="548" class="label group-title" fill="#087b78">런타임 객체</text>
+    <rect x="44" y="570" width="470" height="50" class="box runtime-box"/>
+    <text x="279" y="598" text-anchor="middle" class="label box-title">ImSimEntity</text>
+    <text x="279" y="617" text-anchor="middle" class="label box-sub">AssetPath→glTF/BP 자동 분기 · Cache 사용</text>
+    <rect x="532" y="570" width="470" height="50" class="box runtime-box"/>
+    <text x="767" y="598" text-anchor="middle" class="label box-title">IGViewActor</text>
+    <text x="767" y="617" text-anchor="middle" class="label box-sub">SpectatorPawn · 뷰 전환</text>
+  </g>
+
+  <polygon points="500,652 540,652 540,686 562,686 520,722 478,686 500,686" class="arrow"/>
+  <text x="556" y="682" class="label caption">DriveMode에 따라 컴포넌트 자동 부착</text>
+
+  <g>
+    <rect x="24" y="718" width="990" height="130" rx="10" class="component"/>
+    <text x="52" y="758" class="label group-title" fill="#d78717">Entity 컴포넌트</text>
+    <rect x="44" y="786" width="305" height="48" class="box component-box"/>
+    <text x="196" y="812" text-anchor="middle" class="label box-title">VehicleTelemetryComponent</text>
+    <text x="196" y="831" text-anchor="middle" class="label box-sub">ZMQ SUB CONFLATE · JSON v3.1</text>
+    <rect x="370" y="786" width="305" height="48" class="box component-box"/>
+    <text x="522" y="812" text-anchor="middle" class="label box-title">VehicleVFXComponent</text>
+    <text x="522" y="831" text-anchor="middle" class="label box-sub">슬립 분해 · VFX 4종</text>
+    <rect x="696" y="786" width="305" height="48" class="box component-box"/>
+    <text x="848" y="812" text-anchor="middle" class="label box-title">WaterDepthModifierComponent</text>
+    <text x="848" y="831" text-anchor="middle" class="label box-sub">수중 깊이 변형</text>
+  </g>
+
+  <g>
+    <rect x="1048" y="86" width="520" height="165" rx="10" class="support"/>
+    <text x="1076" y="123" class="label group-title" fill="#5e55b9">매니저 · 자산 로딩</text>
+    <rect x="1068" y="142" width="480" height="50" class="box support-box"/>
+    <text x="1308" y="169" text-anchor="middle" class="label box-title">GLTFCacheSubsystem</text>
+    <text x="1308" y="188" text-anchor="middle" class="label box-sub">entity_registry.xml · 메시 캐시</text>
+    <rect x="1068" y="198" width="480" height="36" class="box support-box"/>
+    <text x="1308" y="222" text-anchor="middle" class="label box-title">GLTFLoadAgent</text>
+    <text x="1308" y="239" text-anchor="middle" class="label box-sub">비동기 메시 로드</text>
+  </g>
+
+  <g>
+    <rect x="1048" y="280" width="520" height="210" rx="10" class="ui"/>
+    <text x="1076" y="318" class="label group-title" fill="#087b78">UI (Slate)</text>
+    <rect x="1068" y="342" width="480" height="47" class="box ui-box"/>
+    <text x="1308" y="369" text-anchor="middle" class="label box-title">SMainMenuPanel</text>
+    <text x="1308" y="386" text-anchor="middle" class="label box-sub">메인 메뉴</text>
+    <rect x="1068" y="398" width="480" height="47" class="box ui-box"/>
+    <text x="1308" y="425" text-anchor="middle" class="label box-title">SViewSwitcherPanel</text>
+    <text x="1308" y="442" text-anchor="middle" class="label box-sub">뷰 전환 패널</text>
+    <rect x="1068" y="454" width="480" height="47" class="box ui-box"/>
+    <text x="1308" y="481" text-anchor="middle" class="label box-title">SUDWControlPanel</text>
+    <text x="1308" y="498" text-anchor="middle" class="label box-sub">날씨 · 대기 제어</text>
+  </g>
+
+  <g>
+    <rect x="1048" y="518" width="520" height="190" rx="10" class="plugin"/>
+    <text x="1076" y="556" class="label group-title" fill="#5f6870">플러그인</text>
+    <rect x="1068" y="580" width="480" height="43" class="box plugin-box"/>
+    <text x="1308" y="606" text-anchor="middle" class="label box-title">ImSimROS2Bridge</text>
+    <text x="1308" y="623" text-anchor="middle" class="label box-sub">자체 · rcl C API · Factory</text>
+    <rect x="1068" y="632" width="480" height="43" class="box plugin-box"/>
+    <text x="1308" y="658" text-anchor="middle" class="label box-title">glTFRuntime</text>
+    <text x="1308" y="675" text-anchor="middle" class="label box-sub">외부 · 런타임 메시 로딩</text>
+    <rect x="1068" y="684" width="480" height="43" class="box plugin-box"/>
+    <text x="1308" y="710" text-anchor="middle" class="label box-title">SensorSim</text>
+    <text x="1308" y="727" text-anchor="middle" class="label box-sub">센서 · 자율주행 (SensorVehicle)</text>
+  </g>
+
+  <g>
+    <rect x="1048" y="736" width="520" height="112" rx="10" class="unit"/>
+    <text x="1076" y="774" class="label group-title" fill="#5f6870">유틸</text>
+    <rect x="1068" y="794" width="480" height="40" class="box plugin-box"/>
+    <text x="1308" y="820" text-anchor="middle" class="label box-title">ImSimMaterialUtils</text>
+    <text x="1308" y="837" text-anchor="middle" class="label box-sub">머티리얼 보정 유틸</text>
+  </g>
+</svg>

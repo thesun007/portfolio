@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AirSim 분석 / AI 대화 콘텐츠 - 정동주</title>
+    <link rel="stylesheet" href="../styles.css?v=44" />
+  </head>
+  <body>
+    <header class="site-nav">
+      <a class="brand" href="../index.html">정동주 포트폴리오</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html">프로젝트</a>
+        <a href="personal-learning.html">개인 학습</a>
+        <a href="../contact.html">연락처</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <div>
+          <p class="kicker">2025 - 2026 / Internal R&D Samples</p>
+          <h1>AirSim 분석 / AI 대화 콘텐츠</h1>
+          <p>사내 활용 가능성을 검토하기 위해 짧은 기간 진행한 연구성 샘플 작업. AirSim 드론 샘플과 AI 대화형 캐릭터 콘텐츠는 목적이 다른 별도 작업으로 나누어 진행</p>
+          <div class="project-facts">
+            <div><span>역할</span> 단독 분석/샘플 제작</div>
+            <div><span>엔진</span> Unreal C++ · Blueprint</div>
+            <div><span>범위</span> 기술 조사 · 샘플 구현 · 시연 영상</div>
+          </div>
+        </div>
+        <aside class="case-meta">
+          <div><span>AirSim</span><strong>드론 샘플 / 경로 이동</strong></div>
+          <div><span>AI 콘텐츠</span><strong>음성 송수신 / 립싱크 연동</strong></div>
+          <div><span>기간</span><strong>항목별 약 1개월</strong></div>
+        </aside>
+      </section>
+
+      <section class="case-section">
+        <h2>AirSim 분석</h2>
+        <div class="media-strip two section-media">
+          <img src="../assets/provided/airsim-sample-drone.png" alt="AirSim 드론 샘플 화면" />
+          <img src="../assets/provided/airsim-sample-camera.png" alt="AirSim 센서 HUD 샘플 화면" />
+        </div>
+        <div class="case-list">
+          <div class="case-row">
+            <span>목표</span>
+            <p>AirSim을 사내 시뮬레이션/드론 샘플에 활용할 수 있는지 확인하기 위해 기능 구조와 사용 흐름을 분석</p>
+          </div>
+          <div class="case-row">
+            <span>구조 파악</span>
+            <p>AirSim 주요 기능과 클래스 관계를 조사하고 SimMode, VehicleApi, PawnSimApi, Physics, API Server 흐름을 클래스 다이어그램으로 정리</p>
+          </div>
+          <div class="case-row">
+            <span>샘플 제작</span>
+            <p>연속 Waypoint 기반 드론 Path 이동 기능을 제작하고, 자체 제작 공원 맵과 Cesium 해외 샘플 맵에 다수 드론 배치</p>
+          </div>
+          <div class="case-row">
+            <span>시연</span>
+            <p>드론 이동, 센서 HUD, 카메라 화면을 구성하고 샘플 동영상 촬영</p>
+          </div>
+        </div>
+        <figure class="game-figure diagram-full section-media">
+          <img src="../assets/provided/airsim-architecture-diagram.png" alt="AirSim 클래스 구조 분석 다이어그램" />
+          <figcaption>AirSim 구조 분석 다이어그램. 설정, SimMode, Pawn/Vehicle API, Physics, RPC/API Server 관계를 정리</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <h2>AI 대화 콘텐츠</h2>
+        <div class="media-strip section-media">
+          <img src="../assets/provided/ai-conversation-sample.png" alt="AI 대화 콘텐츠 캐릭터와 프롬프트 UI" />
+        </div>
+        <div class="case-list">
+          <div class="case-row">
+            <span>목표</span>
+            <p>가상 캐릭터와 음성으로 대화하는 샘플 콘텐츠를 제작해 Unreal 기반 대화형 콘텐츠 가능성 검토</p>
+          </div>
+          <div class="case-row">
+            <span>Live API 조사</span>
+            <p>Google Live API 사용법을 조사하고 마이크 음성 데이터 송신, 음성 데이터 수신 흐름 구성</p>
+          </div>
+          <div class="case-row">
+            <span>캐릭터 연동</span>
+            <p>립싱크 플러그인은 음성에 맞춘 입 모양 처리에 사용하고, Idle 상태의 눈썹 변화, 입꼬리 변화, 눈 깜박임은 커브를 직접 조절해 보완</p>
+          </div>
+          <div class="case-row">
+            <span>시선 제어</span>
+            <p>캐릭터가 카메라를 바라보도록 Aim Control Rig를 추가해 대화 대상에게 시선이 향하는 기본 연출 구성</p>
+          </div>
+          <div class="case-row">
+            <span>설정 UI</span>
+            <p>제한 사항, 컨셉 프롬프트, 언어, 목소리 편집 UI를 적용해 대화형 캐릭터 설정 흐름 구성</p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="next-link">
+        <a class="pill" href="fire-training.html">이전</a>
+        <a class="pill dark" href="../index.html#immersivecast">이머시브캐스트 프로젝트</a>
+      </nav>
+    </main>
+  </body>
+</html>

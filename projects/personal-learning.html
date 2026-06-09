@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>개인 학습 - 정동주 포트폴리오</title>
+    <link rel="stylesheet" href="../styles.css?v=32" />
+  </head>
+  <body>
+    <header class="site-nav">
+      <a class="brand" href="../index.html">정동주 포트폴리오</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html">프로젝트</a>
+        <a href="personal-learning.html">개인 학습</a>
+        <a href="../contact.html">연락처</a>
+      </nav>
+    </header>
+
+    <main class="portfolio-home">
+      <section class="portfolio-hero">
+        <div>
+          <p class="kicker">개인 학습</p>
+          <h1>
+            <span>게임 제작과</span>
+            <span>Unreal 캐릭터 액션 연습</span>
+          </h1>
+        </div>
+        <div class="hero-brief">
+          <p>실무 경력과 분리해서 볼 수 있는 학원 교육 과정 게임 제작물과 Unreal 개인 프로젝트</p>
+          <div class="quick-links">
+            <a class="pill" href="#game-projects">게임 포트폴리오 제작</a>
+            <a class="pill" href="#motion-practice">Unreal 액션 연습</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero-strength">
+        <p class="kicker">학습 범위</p>
+        <div>
+          <strong>게임 제작 흐름</strong>
+          <span>C++, WinAPI, DirectX 기반 학원 프로젝트로 게임 루프와 구현 흐름 학습</span>
+        </div>
+        <div>
+          <strong>2D 게임 로직</strong>
+          <span>충돌, 상태, 애니메이션, 경로 탐색, 타워 배치와 공격 로직 구현 경험</span>
+        </div>
+        <div>
+          <strong>Unreal 구조 이해</strong>
+          <span>Lyra 샘플을 참고해 캐릭터 클래스, 입력, 태그, 애니메이션 구조 분석</span>
+        </div>
+        <div>
+          <strong>캐릭터 액션</strong>
+          <span>Gameplay Tag, Ability, Linked Layer, 파쿠르 기능 중심의 개인 연습</span>
+        </div>
+      </section>
+
+      <section class="portfolio-section">
+        <div class="section-title compact">
+          <p class="kicker">학습 프로젝트</p>
+          <h2>프로젝트</h2>
+        </div>
+
+        <section id="game-projects" class="company-block">
+          <div class="company-title">
+            <h3>게임 포트폴리오 제작</h3>
+            <p class="kicker">학원 교육 과정</p>
+            <span>C++, WinAPI, DirectX 기반으로 만든 2D 게임 학습 프로젝트</span>
+          </div>
+
+          <div class="work-grid">
+            <a class="work-card wide" href="game-projects.html">
+              <div class="thumbnail-pair">
+                <img src="../assets/ppt/84.png" alt="타워 디펜스 타워 배치와 공격 범위 화면" />
+                <img src="../assets/ppt/11.png" alt="메탈슬러그 스타일 보스 전투 화면" />
+              </div>
+              <div class="work-copy">
+                <small>C++ / WinAPI / DirectX</small>
+                <h3>러너, 타워 디펜스, 메탈슬러그 스타일 프로젝트</h3>
+                <p>학원 교육 과정에서 만든 2D 게임 제작물. 타워 배치와 BFS 경로 검사, 상·하체 모션 분리, 적/NPC/보스 상태 처리 등 직접 구현</p>
+                <ul>
+                  <li>BFS 경로 검사</li>
+                  <li>타워 배치/공격</li>
+                  <li>상·하체 모션</li>
+                  <li>적/NPC/보스 AI</li>
+                  <li>포물선/라인 충돌</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <section id="motion-practice" class="company-block">
+          <div class="company-title">
+            <h3>Unreal 캐릭터 액션 연습</h3>
+            <p class="kicker">개인 프로젝트</p>
+            <span>Lyra 샘플 구조를 참고해 Unreal 캐릭터/게임플레이 구조를 연습한 프로젝트</span>
+          </div>
+
+          <div class="work-grid">
+            <a class="work-card wide" href="motion-practice.html">
+              <div class="card-visual soft-card">
+                <span>언리얼</span>
+                <span>캐릭터</span>
+                <span>액션</span>
+              </div>
+              <div class="work-copy">
+                <small>Unreal 5 / 개인 프로젝트</small>
+                <h3>MotionPractice</h3>
+                <p>캐릭터 클래스, 태그, 입력, 애니메이션, 파쿠르 기능을 중심으로 Unreal 방식의 캐릭터 액션 구조 연습</p>
+                <ul>
+                  <li>Gameplay Tag</li>
+                  <li>Linked Layer</li>
+                  <li>Ability</li>
+                  <li>Parkour</li>
+                </ul>
+              </div>
+            </a>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

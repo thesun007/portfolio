@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rio VR 훈련 시뮬레이터 - 정동주</title>
+    <link rel="stylesheet" href="../styles.css?v=54" />
+  </head>
+  <body>
+    <header class="site-nav">
+      <a class="brand" href="../index.html">정동주 포트폴리오</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html">프로젝트</a>
+        <a href="personal-learning.html">개인 학습</a>
+        <a href="../contact.html">연락처</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <div>
+          <p class="kicker">2024.07 - 2025.10 / Unreal VR Training Simulator</p>
+          <h1>Rio VR 훈련 시뮬레이터 기능 개선</h1>
+          <p>운영 중인 Unreal VR 훈련 콘텐츠의 기능 개선 사업. 고객 요구사항을 정해진 기간과 훈련 계획 안에서 안전하게 반영하는 것이 목적이었고, 각 항목마다 원인과 연관 범위를 파악한 뒤 기존 구조와 호환되도록 수정</p>
+          <div class="project-facts">
+            <div><span>역할</span> 기능 개선 개발</div>
+            <div><span>환경</span> Unreal VR · Multiplayer</div>
+            <div><span>인원</span> 개발자 3명, 2025년부터 2명</div>
+          </div>
+        </div>
+        <aside class="case-meta">
+          <div><span>주요 범위</span><strong>AAR · 캐릭터/애니메이션 · UI · 시스템</strong></div>
+          <div><span>엔진</span><strong>UE 5.2 → UE 5.5</strong></div>
+          <div><span>비고</span><strong>현장 설치 대응</strong></div>
+        </aside>
+      </section>
+
+      <figure class="case-main-image rio-hero-pair">
+        <img src="../assets/provided/rio-phone-map.png" alt="Rio 휴대폰 미니맵과 위치 표시 UI" />
+        <img src="../assets/provided/rio-npc.png" alt="Rio NPC 배치 테스트 화면" />
+      </figure>
+
+      <section class="rio-brief">
+        <div class="rio-brief-title">
+          <p class="kicker">작업 관점</p>
+          <h2>기존 구조 안에서 안정적으로 개선</h2>
+          <p>요구사항별 영향 범위를 확인하고, 기능 책임과 호출 위치를 분리해 유지보수 가능한 방식으로 반영</p>
+        </div>
+        <dl class="rio-principles">
+          <div>
+            <dt>요구사항 정리</dt>
+            <dd>기능 목적과 실제 훈련 흐름에서 필요한 동작 기준을 먼저 정리</dd>
+          </div>
+          <div>
+            <dt>호환성 유지</dt>
+            <dd>작업 영역이 다른 기능과 충돌하지 않도록 관련 구조를 파악하며 반영</dd>
+          </div>
+          <div>
+            <dt>유지보수 고려</dt>
+            <dd>기능 책임과 호출 위치를 분리해 이후 수정이 수월하도록 구현</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="rio-scope">
+        <div class="block-heading">
+          <p class="kicker">기능 개선 범위</p>
+          <h2>담당 항목과 작업 방향</h2>
+          <p>규모가 크거나 시스템 영향 범위가 있던 개선 항목을 기능 단위로 정리</p>
+        </div>
+        <div class="rio-improvement-map">
+          <article class="rio-lane">
+            <div class="lane-summary">
+              <strong>AAR 기능 개선</strong>
+              <p>AAR 녹화 안정화, AAR 목록 UI 개선, 타임라인 조작 오류, 이동 경로 표시 개선</p>
+            </div>
+            <ol class="lane-flow">
+              <li><span>01</span><strong>AAR 녹화 안정화</strong><p>녹화 끊김과 AAR 조작 오류의 원인을 추적하고 완화</p></li>
+              <li><span>02</span><strong>AAR 목록 UI 개선</strong><p>파일 네이밍, 삭제, 최근 항목 유지, 잠금 기능 등 목록 관리 개선</p></li>
+              <li><span>03</span><strong>AAR 경로 표시</strong><p>플레이어/NPC 이동 경로를 저장해 AAR 모드에서 표시</p></li>
+            </ol>
+          </article>
+          <article class="rio-lane">
+            <div class="lane-summary">
+              <strong>캡처 파일 공유</strong>
+              <p>훈련자 클라이언트에서 촬영한 동영상과 사진을 교관 컴퓨터에서 확인하는 기능 개선</p>
+            </div>
+            <ol class="lane-flow">
+              <li><span>01</span><strong>다중 수신</strong><p>교관 컴퓨터가 여러 훈련자의 사진/동영상 파일을 IOCP로 수신</p></li>
+              <li><span>02</span><strong>목록 관리</strong><p>팀, 닉네임, 촬영시간을 파일명에서 추출해 교관 UI에 표시</p></li>
+              <li><span>03</span><strong>비동기 처리</strong><p>사진 저장/로드 과정에서 발생하는 프레임 드랍을 완화</p></li>
+            </ol>
+          </article>
+          <article class="rio-lane">
+            <div class="lane-summary">
+              <strong>캐릭터 IK 기능 개선</strong>
+              <p>외부 IK 플러그인 교체와 멀티플레이 상황의 캐릭터 동작 버그 수정</p>
+            </div>
+            <ol class="lane-flow">
+              <li><span>01</span><strong>Mimic Pro 적용</strong><p>미완성 자체 Control Rig 기능을 외부 IK 플러그인으로 교체</p></li>
+              <li><span>02</span><strong>멀티플레이 버그 수정</strong><p>권한 분기와 플러그인 함수 호출 위치 조정으로 서버/클라이언트 동작 보정</p></li>
+            </ol>
+          </article>
+          <article class="rio-lane">
+            <div class="lane-summary">
+              <strong>UI 교체와 UE 5.5 전환</strong>
+              <p>전반적 UI 교체와 엔진 마이그레이션 과정에서 기존 로직과 플러그인 호환 처리</p>
+            </div>
+            <ol class="lane-flow">
+              <li><span>01</span><strong>전반 UI 교체</strong><p>새 UI 디자인을 기존 기능 흐름과 충돌하지 않도록 반영</p></li>
+              <li><span>02</span><strong>UE 5.5 마이그레이션</strong><p>Target.cs, 참조 오류, 플러그인 업데이트와 경고 처리</p></li>
+              <li><span>03</span><strong>크래시 원인 확인</strong><p>덤프와 BP 콜스택으로 마이그레이션 후 크래시 발생 위치 추적</p></li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-lead">
+        <p class="kicker">담당 상세</p>
+        <h2>기능별 구현 상세</h2>
+        <p>각 요구사항을 기존 훈련 흐름 안에서 정리하고, 기능별 영향 범위와 수정 내용을 구분</p>
+      </section>
+
+      <section class="case-section">
+        <h2>AAR 기능 개선</h2>
+        <div class="case-note">
+          <h2>작업 범위</h2>
+          <p>AAR 녹화 안정화, AAR 모드 조작 오류, 목록 UI 개선, 이동 경로 표시 기능을 각각 구분해 처리</p>
+        </div>
+        <div class="case-list">
+          <div class="case-row">
+            <span>문제</span>
+            <p>AAR 녹화가 간헐적으로 끊기고, AAR 모드에서 일시정지/재개, 재생/중지 반복, 타임라인 이동 후 원복, 재개 실패, AAR 멈춤 문제가 발생</p>
+          </div>
+          <div class="case-row">
+            <span>원인 분석</span>
+            <p>Unreal의 AAR 녹화 구조가 Replication 데이터 저장 흐름과 연결되어 있었고, DemoNetDriver의 Reliable 패킷 버퍼 오버플로우 문제가 녹화 안정성에 영향</p>
+          </div>
+          <div class="case-row">
+            <span>대응</span>
+            <p>컨테이너 용량 조정, AAR 녹화 주기 조절, Replication 양 감소로 훈련 시간을 버틸 수 있는 수준까지 완화. UE 5.5 전환 이후 해당 문제가 재발하지 않음</p>
+          </div>
+          <div class="case-row">
+            <span>AAR 목록 UI</span>
+            <p>파일 네이밍, 삭제, 최근 3개 유지, 잠금 기능을 개선해 AAR 목록 UI 흐름을 정리</p>
+          </div>
+          <div class="case-row">
+            <span>AAR 경로 표시</span>
+            <p>플레이어/NPC 이동 경로를 별도 저장하고 AAR 모드에서 경로를 확인할 수 있도록 표시 기능 추가</p>
+          </div>
+        </div>
+        <figure class="case-media pair">
+          <div>
+            <img src="../assets/provided/rio-aar.png" alt="Rio AAR 모드 화면" />
+            <img src="../assets/provided/rio-aar-path.png" alt="Rio AAR 이동 경로 표시 화면" />
+          </div>
+          <figcaption>AAR 모드 화면과 이동 경로 표시 샘플</figcaption>
+        </figure>
+      </section>
+
+      <section class="case-section">
+        <h2>캡처 파일 공유</h2>
+        <div class="case-note">
+          <h2>설계 판단</h2>
+          <p>여러 훈련자의 동시 촬영 파일을 교관 컴퓨터에서 안정적으로 받아야 했기 때문에, 멀티 스레드 기반 다중 수신 방식으로 파일 공유 시스템을 구성. 사진 저장/로드는 프레임 드랍을 줄이기 위해 비동기 처리</p>
+        </div>
+        <div class="case-list">
+          <div class="case-row">
+            <span>구조</span>
+            <p>교관 컴퓨터가 IOCP 수신자로 동영상/사진 파일을 받고, 각 훈련자 클라이언트가 파일을 전송. 수신 후 팀, 닉네임, 촬영시간을 파일명에서 추출해 교관 UI 목록에 표시</p>
+          </div>
+          <div class="case-row">
+            <span>동영상</span>
+            <p>훈련자 클라이언트에서 촬영한 동영상 파일을 교관 컴퓨터로 전송하고, 교관 UI에서 목록 확인과 재생 기능 제공. AAR 흐름과 호환되도록 파일 관리 방식 정리</p>
+          </div>
+          <div class="case-row">
+            <span>사진</span>
+            <p>교관 컴퓨터에는 파일 공유 시스템으로 사진을 전송. 같은 팀 클라이언트끼리는 촬영 위치와 방향을 Replication으로 공유하고 각 PC에서 캡처하는 방식으로 공유 모의</p>
+          </div>
+          <div class="case-row">
+            <span>성능 우선</span>
+            <p>파일 비동기 처리로 휴대폰 앨범 UI 표시에는 약간의 딜레이가 존재. 대신 여러 명이 촬영해도 끊김이 덜하도록 성능 안정성을 우선</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>캐릭터 IK 기능 개선</h2>
+        <figure class="case-media">
+          <img src="../assets/provided/rio-vr-ik.png" alt="Rio VR 캐릭터 IK 손 추적 화면" />
+          <figcaption>VR 캐릭터 손 추적/IK 보정 화면</figcaption>
+        </figure>
+        <div class="case-list">
+          <div class="case-row">
+            <span>Mimic Pro 적용</span>
+            <p>기존 자체 Control Rig 기능이 미완성 상태였고, Mimic Pro 플러그인으로 교체. 멀티플레이에서 서버가 보는 클라이언트 캐릭터 움직임이 밀리거나 이상 동작하는 문제를 BP 로직 분석으로 추적</p>
+          </div>
+          <div class="case-row">
+            <span>멀티플레이 버그 수정</span>
+            <p>권한 분기와 플러그인 함수 일부의 호출 위치를 조정해 서버/클라이언트 상황에 맞는 로직이 실행되도록 정리</p>
+          </div>
+          <div class="case-row">
+            <span>의자 앉기</span>
+            <p>VR 캐릭터 IK 교체 이후 훈련 동작과 호환되도록 의자 앉기 기능 등 추가 요구사항 반영</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>UI 교체와 UE 5.5 전환</h2>
+        <div class="case-note">
+          <h2>작업 범위</h2>
+          <p>프로그램 전반의 UI 디자인 교체와 기존 기능 로직 호환, UE 5.2에서 UE 5.5로의 마이그레이션 과정에서 발생한 오류와 크래시 추적을 함께 처리</p>
+        </div>
+        <div class="case-list">
+          <div class="case-row">
+            <span>UI 교체</span>
+            <p>프로그램 전반의 UI 디자인 교체 항목을 반영하고, 기존 기능 흐름과 충돌하지 않도록 화면 로직과 연결부 호환 작업 진행</p>
+          </div>
+          <div class="case-row">
+            <span>UE 5.5 전환</span>
+            <p>마이그레이션 기능 실행 후 Target.cs, 참조 오류, Warning 메시지, 플러그인 업데이트/교체, 커스텀 수정분 이관 처리</p>
+          </div>
+          <div class="case-row">
+            <span>크래시 추적</span>
+            <p>덤프와 BP 콜스택으로 마이그레이션 후 크래시 발생 위치 추적. Blueprint 쪽은 Development 패키징과 `-ScriptStackOnWarnings` 옵션으로 BP 스크립트 콜스택 확인</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>작업 성격</h2>
+        <div class="case-list compact">
+          <div class="case-row">
+            <span>기능개선 사업</span>
+            <p>고객 요구사항을 기간 안에 처리해야 하는 사업이라, 기존 훈련 흐름과 영향 범위를 먼저 확인한 뒤 안정적으로 반영하는 판단이 중요</p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="next-link">
+        <a class="pill" href="imsimviewer.html">이전</a>
+        <a class="pill dark" href="smart-factory.html">다음 프로젝트</a>
+      </nav>
+    </main>
+  </body>
+</html>

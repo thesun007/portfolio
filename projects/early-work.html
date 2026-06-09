@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>그루크리에이티브랩 콘텐츠 개발 - 정동주</title>
+    <link rel="stylesheet" href="../styles.css?v=31" />
+  </head>
+  <body>
+    <header class="site-nav">
+      <a class="brand" href="../index.html">정동주 포트폴리오</a>
+      <nav aria-label="주요 메뉴">
+        <a href="../index.html">프로젝트</a>
+        <a href="personal-learning.html">개인 학습</a>
+        <a href="../contact.html">연락처</a>
+      </nav>
+    </header>
+
+    <main class="case-page">
+      <section class="case-hero">
+        <div>
+          <p class="kicker">2017 - 2018 / Unity, C#, WinForms</p>
+          <h1>그루크리에이티브랩 콘텐츠 개발</h1>
+          <p>Unity 기반 VR/콘텐츠 기능과 C# 응용 프로그램 개발을 통해 실무 구현 흐름을 익힌 초기 경력 프로젝트</p>
+          <div class="project-facts">
+            <div><span>역할</span> 클라이언트 개발</div>
+            <div><span>도구</span> Unity · C# · WinForms</div>
+            <div><span>범위</span> 기능 구현 · 연동 · 샘플 제작</div>
+          </div>
+        </div>
+        <aside class="case-meta">
+          <div><span>기간</span><strong>2017.08 - 2018.10</strong></div>
+          <div><span>분야</span><strong>VR 콘텐츠 · 응용 프로그램</strong></div>
+          <div><span>구성</span><strong>3개 프로젝트 통합 정리</strong></div>
+        </aside>
+      </section>
+
+      <section class="labeled-block">
+        <div class="block-heading">
+          <p class="kicker">요약</p>
+          <h2>프로젝트 구성</h2>
+        </div>
+        <div class="summary-grid">
+          <article class="summary-tile">
+            <span>프로젝트 01</span>
+            <strong>SEM 문서 기반 4D 의자 제어 모듈</strong>
+            <p>의자 제어 XML 스키마 문서인 SEM을 분석하고, XML 명령 생성 클래스와 TCP/UDP 전송 클래스를 제작해 Unity 콘텐츠에서 호출 가능한 플러그인 구성</p>
+          </article>
+          <article class="summary-tile">
+            <span>프로젝트 02</span>
+            <strong>소방차 경로 탐색 AI 연구용 도시 빌드 맵툴</strong>
+            <p>오브젝트 배치, 회전, 화재 확산, 건물 파괴, 도로 타일 기반 BFS 테스트 기능 구현</p>
+          </article>
+          <article class="summary-tile">
+            <span>프로젝트 03</span>
+            <strong>VR 어지럼증 솔루션 분석 프로그램 기능 개선</strong>
+            <p>동영상 제어, 그래프 시각화, 서버 저장/불러오기, 라이선스 확인 등 응용 프로그램 기능 개선</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="project-case">
+        <div class="project-case-title">
+          <p class="kicker">상세 01</p>
+          <h2>SEM 문서 기반 4D 의자 제어 모듈</h2>
+          <p>메인 작업은 의자 제어 XML 스키마 문서인 SEM을 분석해 제어 모듈을 제작한 것. 샘플 VR 콘텐츠는 제작한 모듈을 시연하고 검증하기 위한 부가 개발</p>
+        </div>
+        <div class="project-overview">
+          <div><span>기간</span><strong>2017.07 - 2017.11</strong></div>
+          <div><span>참여</span><strong>개발자 2명</strong></div>
+          <div><span>역할</span><strong>4D 의자 제어 모듈 개발</strong></div>
+        </div>
+        <figure class="system-figure" aria-label="4D 의자 제어 모듈 동작 구성도">
+          <svg viewBox="0 0 1100 560" role="img">
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0,0 L10,5 L0,10 Z" />
+              </marker>
+            </defs>
+
+            <rect class="zone core" x="36" y="70" width="318" height="430" rx="18" />
+            <text class="zone-label" x="60" y="110">4D 의자 제어 모듈</text>
+
+            <rect class="zone demo" x="640" y="70" width="424" height="406" rx="18" />
+            <text class="zone-label" x="664" y="110">시연용 샘플 VR 콘텐츠</text>
+
+            <rect class="box light" x="88" y="140" width="226" height="66" rx="10" />
+            <text class="box-title" x="201" y="166" text-anchor="middle">SEM 문서 분석</text>
+            <text class="box-sub" x="201" y="190" text-anchor="middle">의자 제어 XML 규격</text>
+
+            <rect class="box primary" x="66" y="252" width="270" height="104" rx="12" />
+            <text class="box-title" x="201" y="284" text-anchor="middle">동작 명령 XML 생성</text>
+            <text class="box-title" x="201" y="312" text-anchor="middle">&amp; UDP/TCP 전송</text>
+            <text class="box-sub" x="201" y="336" text-anchor="middle">이벤트 컴포넌트가 호출</text>
+
+            <rect class="box dark" x="68" y="402" width="266" height="76" rx="10" />
+            <text class="box-title invert" x="201" y="430" text-anchor="middle">4D 의자 기능 동작</text>
+            <text class="box-sub invert" x="201" y="454" text-anchor="middle">6축 모션 · 진동 · 바람</text>
+            <text class="box-sub invert" x="201" y="472" text-anchor="middle">열 · 물 분사</text>
+
+            <rect class="box event" x="404" y="135" width="202" height="64" rx="10" />
+            <text class="box-title" x="505" y="162" text-anchor="middle">효과 이벤트 컴포넌트</text>
+            <text class="box-sub" x="505" y="185" text-anchor="middle">파티클/환경 효과 연결</text>
+
+            <rect class="box event" x="404" y="383" width="202" height="64" rx="10" />
+            <text class="box-title" x="505" y="410" text-anchor="middle">차량 이벤트 컴포넌트</text>
+            <text class="box-sub" x="505" y="433" text-anchor="middle">진동/회전/이동량 계산</text>
+
+            <rect class="box sample" x="682" y="138" width="158" height="58" rx="10" />
+            <text class="box-title invert" x="761" y="164" text-anchor="middle">파티클 추가</text>
+            <text class="box-sub invert" x="761" y="186" text-anchor="middle">불/물/바람 효과</text>
+
+            <rect class="box sample" x="870" y="138" width="158" height="58" rx="10" />
+            <text class="box-title invert" x="949" y="164" text-anchor="middle">물 대포 파티클</text>
+            <text class="box-sub invert" x="949" y="186" text-anchor="middle">이벤트 연출</text>
+
+            <rect class="box sample" x="682" y="262" width="158" height="58" rx="10" />
+            <text class="box-title invert" x="761" y="288" text-anchor="middle">랜덤 이동/공격 AI</text>
+            <text class="box-sub invert" x="761" y="310" text-anchor="middle">동물 상태 로직</text>
+
+            <rect class="box sample" x="870" y="262" width="158" height="58" rx="10" />
+            <text class="box-title invert" x="949" y="288" text-anchor="middle">마취총 조작</text>
+            <text class="box-sub invert" x="949" y="310" text-anchor="middle">상호작용</text>
+
+            <rect class="box sample" x="682" y="386" width="346" height="58" rx="10" />
+            <text class="box-title invert" x="855" y="412" text-anchor="middle">차량 제어</text>
+            <text class="box-sub invert" x="855" y="434" text-anchor="middle">차량 움직임 기반 의자 모션 이벤트</text>
+
+            <path class="link" d="M201 206 L201 244" />
+            <path class="link" d="M201 356 L201 394" />
+            <path class="link thin" d="M682 167 L618 167" />
+            <path class="link thin" d="M682 415 L618 415" />
+            <path class="link trunk" d="M382 167 L382 415" />
+            <path class="link trunk" d="M404 167 L382 167" />
+            <path class="link trunk" d="M404 415 L382 415" />
+            <path class="link" d="M382 304 L348 304" />
+          </svg>
+          <figcaption>파란 블록은 샘플 VR 콘텐츠의 효과/기능, 주황 블록은 각 기능과 연결된 이벤트 발생 컴포넌트. 이벤트 컴포넌트가 4D 의자 제어 모듈의 XML 생성/전송 기능을 호출하는 구조</figcaption>
+        </figure>
+        <div class="case-list compact">
+          <div class="case-row">
+            <span>제어 모듈</span>
+            <p>의자 제어 XML 스키마 문서인 SEM을 기준으로 XML 데이터 생성기와 TCP/UDP 전송기 구현.</p>
+          </div>
+          <div class="case-row">
+            <span>동작 데이터</span>
+            <p>6축 모션, 진동, 바람, 열, 물 분사 등 의자 기능을 XML 명령 데이터로 표현.</p>
+          </div>
+          <div class="case-row">
+            <span>차량 이벤트</span>
+            <p>타겟의 이동 방향/이동량, 회전 방향/회전량을 계산해 6축 모션 데이터로 변환.</p>
+          </div>
+          <div class="case-row">
+            <span>시연 콘텐츠</span>
+            <p>제어 모듈 시연을 위한 동물 이동/도망/공격 AI, 마취총 상호작용, 물 대포/파티클 등 샘플 기능 제작.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-case">
+        <div class="project-case-title">
+          <p class="kicker">상세 02</p>
+          <h2>소방차 경로 탐색 AI 연구용 도시 빌드 맵툴</h2>
+          <p>실제 프로그램 화면은 남아있지 않아 PPT에서도 비슷한 에셋 이미지로 예시 대체. 구현 기능과 도구 구조 중심 설명</p>
+        </div>
+        <div class="project-overview">
+          <div><span>기간</span><strong>2018.06 - 2018.09</strong></div>
+          <div><span>참여</span><strong>개발자 2명</strong></div>
+          <div><span>역할</span><strong>타일형 도시 맵툴 기능 개발</strong></div>
+        </div>
+        <figure class="annotated-image">
+          <img src="../assets/ppt/43.jpeg" alt="도시 빌드 맵툴 예시 에셋 이미지" />
+          <figcaption>실제 화면이 아닌, 정사각형 타일 기반 도시 구성을 설명하기 위한 예시 이미지</figcaption>
+        </figure>
+        <div class="case-list compact">
+          <div class="case-row">
+            <span>배치 도구</span>
+            <p>바닥 타일, 건물, 자동차, 나무, 사람 등 각종 오브젝트 배치 기능과 배치 전/후 회전 기능 구현.</p>
+          </div>
+          <div class="case-row">
+            <span>툴 UI</span>
+            <p>여러 오브젝트 에셋과 아웃라이너 성격의 기능 에셋을 활용해 맵 편집 흐름을 구성.</p>
+          </div>
+          <div class="case-row">
+            <span>시뮬레이션 요소</span>
+            <p>화재 발생, 화재 번짐, 건물 파괴 기능을 넣어 화재 상황이 있는 도시 환경을 구성.</p>
+          </div>
+          <div class="case-row">
+            <span>경로 테스트</span>
+            <p>AI 적용 전 도시 환경 검증을 위해 도로형 타일을 따라 목적지까지 이동하는 BFS 길찾기 기능 구현.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="project-case">
+        <div class="project-case-title">
+          <p class="kicker">상세 03</p>
+          <h2>VR 어지럼증 솔루션 분석 프로그램 기능 개선</h2>
+          <p>VR 어지럼증 유발 요소 측정과 분석 결과 관리를 위한 응용 프로그램의 사용자 기능, 데이터 표시, 서버 연동 기능 개선</p>
+        </div>
+        <div class="project-overview">
+          <div><span>기간</span><strong>2018.01 - 2018.09</strong></div>
+          <div><span>참여</span><strong>개발자 2명</strong></div>
+          <div><span>역할</span><strong>WinForms 기능 개선 및 추가 개발</strong></div>
+        </div>
+        <div class="case-list compact">
+          <div class="case-row">
+            <span>사용자 기능</span>
+            <p>회원가입, 로그인, 로그아웃 기능과 결제/라이선스 확인 기능 개선.</p>
+          </div>
+          <div class="case-row">
+            <span>영상/그래프</span>
+            <p>동영상 플레이어 API를 이용한 영상 조작 기능과 점 분포/꺾은선 그래프 등 데이터 시각화 구현.</p>
+          </div>
+          <div class="case-row">
+            <span>서버 연동</span>
+            <p>어지럼증 요소 추출 데이터와 분석 결과 데이터를 REST API/protobuf 기반으로 저장/불러오기.</p>
+          </div>
+          <div class="case-row">
+            <span>데이터 처리</span>
+            <p>저장 데이터 암호화/복호화와 서버 통신 흐름 처리, C# 응용 프로그램 유지보수 경험 확보.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>추가 지원</h2>
+        <div class="case-list">
+          <div class="case-row">
+            <span>모바일 VR 시력 검사 콘텐츠</span>
+            <p>모바일 VR과 삼성 Gear 기반 시력 검사 콘텐츠에서 게임패드 연결, 컨트롤, UI 기능 개선 작업을 지원.</p>
+          </div>
+        </div>
+      </section>
+
+      <nav class="next-link">
+        <a class="pill" href="../index.html#groove">프로젝트로 돌아가기</a>
+      </nav>
+    </main>
+  </body>
+</html>
