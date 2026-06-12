@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unreal 캐릭터 액션 연습 - 정동주 포트폴리오</title>
+    <title>Unreal 캐릭터 액션 프로토타입 - 정동주 포트폴리오</title>
     <link rel="stylesheet" href="../styles.css?v=23" />
   </head>
   <body>
@@ -20,11 +20,11 @@
       <section class="case-hero">
         <div>
           <p class="kicker">개인 프로젝트</p>
-          <h1>Unreal 캐릭터 액션 연습</h1>
-          <p>언리얼 C++와 Lyra 샘플 구조를 참고해 캐릭터 액션 프로젝트의 기본 구조를 직접 구성한 연습 프로젝트입니다.</p>
+          <h1>Unreal 캐릭터 액션 프로토타입</h1>
+          <p>Lyra 샘플의 입력, 태그, Ability 흐름을 참고해 Unreal C++ 기반 캐릭터 액션 구조를 재구성한 개인 프로젝트. 파쿠르와 암살 액션은 Gameplay Ability System의 Ability로 분리하고, 루트 모션·모션 워핑·애니메이션 커브 보정으로 액션 이동과 정렬을 처리</p>
           <div class="project-facts">
             <div><span>엔진</span> Unreal 5</div>
-            <div><span>목표</span> 캐릭터 액션 구조 학습</div>
+            <div><span>구조</span> Gameplay Ability System</div>
             <div><span>링크</span> MotionPractice</div>
           </div>
         </div>
@@ -38,39 +38,68 @@
       <section class="summary-grid">
         <article class="summary-tile">
           <span>구조</span>
-          <strong>캐릭터 액션 프로젝트 기본 틀 구성</strong>
-          <p>캐릭터 클래스, 입력, 태그, 애니메이션 구조를 분리해 Unreal 방식의 프로젝트 틀을 연습했습니다.</p>
+          <strong>GAS 기반 액션 구성</strong>
+          <p>파쿠르와 암살 액션을 Ability 단위로 분리하고 Gameplay Tag로 상태, 입력, 발동 조건을 관리</p>
         </article>
         <article class="summary-tile">
           <span>애니메이션</span>
-          <strong>Linked Layer와 캐릭터 교체 구조</strong>
-          <p>몸체 교체와 애니메이션 레이어 구성을 참고해 캐릭터 움직임에 적용했습니다.</p>
+          <strong>루트 모션과 모션 워핑</strong>
+          <p>루트 모션 기반 파쿠르 애니메이션에 Motion Warping을 연결해 장애물 위치에 맞춰 이동과 정렬 처리</p>
         </article>
-        <article class="summary-tile">
-          <span>액션</span>
-          <strong>파쿠르와 능력 구조 연습</strong>
-          <p>Gameplay Tag와 Ability 구조를 참고해 캐릭터 액션 기능 구현을 연습했습니다.</p>
-        </article>
-      </section>
+      <article class="summary-tile">
+        <span>커브</span>
+        <strong>애니메이션 커브 보정</strong>
+        <p>엔진 기본 DistanceCurveModifier를 개량해 발 높이 커브를 추출하고 보정 데이터로 활용</p>
+      </article>
+    </section>
 
-      <section class="case-section">
-        <h2>학습 포인트</h2>
-        <div class="case-list">
+    <section class="case-section">
+      <h2>액션 화면</h2>
+      <div>
+        <p class="section-lead">파쿠르 이동, 슬라이딩 후 앉기 전환, 암살 액션, 모션 워핑 적용 상태를 확인할 수 있는 화면</p>
+        <div class="motion-gallery">
+          <figure class="motion-shot">
+            <img src="../assets/provided/motion-wall-run.png" alt="벽면 이동 액션 화면" />
+            <figcaption>파쿠르 이동 / 벽면 액션</figcaption>
+          </figure>
+          <figure class="motion-shot">
+            <img src="../assets/provided/motion-slide-crouch.png" alt="슬라이딩 후 앉기 전환 화면" />
+            <figcaption>슬라이딩 후 앉기 전환</figcaption>
+          </figure>
+          <figure class="motion-shot">
+            <img src="../assets/provided/motion-takedown.png" alt="암살 액션 화면" />
+            <figcaption>암살 액션 / 대상 정렬</figcaption>
+          </figure>
+          <figure class="motion-shot">
+            <img src="../assets/provided/motion-warping.png" alt="모션 워핑 적용 화면" />
+            <figcaption>모션 워핑 / 위치 보정</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2>구현 포인트</h2>
+      <div class="case-list">
           <div class="case-row">
-            <span>Character</span>
-            <p>캐릭터 클래스와 태그 기반 상태 연결 구조를 참고했습니다.</p>
+            <span>Ability 구성</span>
+            <p>Gameplay Ability System으로 파쿠르와 암살 액션을 캐릭터 Ability 단위로 분리하고, Gameplay Tag로 상태와 발동 조건을 관리</p>
           </div>
           <div class="case-row">
-            <span>Input</span>
-            <p>입력 액션과 캐릭터 동작이 분리되는 방식을 이해하고 프로젝트에 적용했습니다.</p>
+            <span>파쿠르 구현</span>
+            <p>Root Motion 기반 파쿠르 애니메이션에 Motion Warping을 연결해 장애물 위치에 맞는 이동과 정렬 처리</p>
           </div>
           <div class="case-row">
-            <span>Animation</span>
-            <p>Linked Layer 애니메이션 구조를 활용해 캐릭터 움직임 표현을 연습했습니다.</p>
+            <span>애니메이션 구조</span>
+            <p>Linked Layer로 캐릭터 교체와 애니메이션 레이어를 분리하고, 캐릭터 움직임 적용 구조를 구성</p>
           </div>
           <div class="case-row">
-            <span>Action</span>
-            <p>파쿠르와 캐릭터 액션 기능을 통해 Unreal 게임플레이 구조를 익혔습니다.</p>
+            <span>커브 보정</span>
+            <p>엔진 기본 DistanceCurveModifier를 개량해 애니메이션에서 발 높이 커브를 추출하고 보정 데이터로 활용</p>
+          </div>
+          <div class="case-row">
+            <span>Lyra 참고</span>
+            <p>Lyra의 입력, 태그, Ability 흐름을 참고하되 개인 프로젝트 구조에 맞춰 재구성</p>
           </div>
         </div>
       </section>

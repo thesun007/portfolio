@@ -109,8 +109,8 @@
         <h2>ROS2Bridge / 제어 서비스</h2>
         <p class="case-intro">ROS2Bridge 플러그인을 기반으로 월드, 시뮬레이션, Entity, 환경 상태를 처리하는 서비스와 매니저 클래스를 구성</p>
         <figure class="case-media contain architecture-media">
-          <img src="../assets/imsimviewer-architecture.svg?v=2" alt="ImSimViewer 구조도" />
-          <figcaption>Viewer 설정과 Entity 처리 구조</figcaption>
+          <img src="../assets/imsimviewer-runtime-structure.png" alt="ImSimViewer 런타임 소유 구조" />
+          <figcaption>런타임 소유 구조와 지원 계층</figcaption>
         </figure>
         <div class="case-list">
           <div class="case-row">
@@ -197,33 +197,28 @@
         <div class="marine-notes">
           <article>
             <h3>수면과 수중 표현 구성</h3>
-            <p>UE Water Plugin과 Ultra Dynamic Sky 플러그인으로 수면, 수중 카메라, 기상/안개 기반 표현을 구성. Caustics와 God Ray는 플러그인 효과를 활용하고, 화면 일렁임은 별도 Post Process 로직으로 추가</p>
+            <p>수면, 수중 카메라, 기상/안개 기반 표현을 구성. <strong>Caustics와 God Ray</strong>는 플러그인 효과를 활용하고, <strong>화면 일렁임</strong>은 별도 Post Process 로직으로 추가</p>
           </article>
           <article>
             <h3>깊이별 수중 분위기</h3>
-            <p>카메라의 수면 대비 깊이를 기준으로 색 채널별 감쇠율 차등 원리를 적용해 깊이별 수중 분위기를 조정. 수면 위 이동, Pawn 전환, 종료 시 변경 값을 원래 상태로 복원</p>
+            <p>카메라의 수면 대비 깊이를 기준으로 <strong>색 채널별 감쇠율 차등 원리</strong>를 적용해 깊이별 수중 분위기를 조정</p>
           </article>
           <article>
             <h3>잠수정과 부력 검증</h3>
-            <p>HoloOcean을 통합해 HoloOcean agent 기반 잠수정 조종과 센서 연동을 테스트. Water Plugin 부력 컴포넌트와 질량, 선/각속도 damping 값을 조절해 구축함/항공모함급 선박 모의 테스트 진행</p>
+            <p><strong>잠수정 조종과 센서 연동</strong>을 테스트하고, 부력 컴포넌트와 질량, 선/각속도 damping 값을 조절해 <strong>구축함/항공모함급 선박 모의 테스트</strong> 진행</p>
           </article>
           <article>
             <h3>확인한 한계</h3>
-            <p>UE Water Plugin을 사용할 경우 underwater Post Process가 반투명 표현과 light scattering을 가리는 문제가 있어, 관련 보정은 추가 개발 과제로 정리</p>
+            <p>UE Water Plugin 사용 시 <strong>underwater Post Process가 반투명 표현과 light scattering을 가리는 문제</strong>가 있어, 관련 보정은 추가 개발 과제로 정리</p>
           </article>
         </div>
       </section>
 
       <section class="case-section constraints-section">
-        <h2>제약과 대응</h2>
-        <div class="case-list compact">
-          <div class="case-row structured-row">
-            <span>AI Agent 활용</span>
-            <div class="row-points">
-              <p><strong>활용</strong>구조 설계, 구현 순서 정리, 코드 검토, 테스트/버그 수정 보조</p>
-              <p><strong>목적</strong>개발 속도와 검토 밀도 보완</p>
-            </div>
-          </div>
+        <h2>AI Agent 활용</h2>
+        <div class="row-points ai-agent-note">
+          <p><strong>범위</strong> 구조 설계, 구현 순서 정리, 코드 검토, 테스트/버그 수정 보조</p>
+          <p><strong>목적</strong> 개발 속도와 검토 밀도 보완</p>
         </div>
       </section>
 
