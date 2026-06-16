@@ -3357,6 +3357,57 @@ figcaption {
   font-weight: 800;
 }
 
+.reference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  width: min(100%, 1040px);
+}
+
+.reference-card {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.reference-card h3 {
+  margin: 0 0 18px;
+  color: #08100e;
+  font-size: 20px;
+  line-height: 1.28;
+  letter-spacing: 0;
+}
+
+.reference-card dl {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.reference-card dl div {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.reference-card dt {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.55;
+}
+
+.reference-card dd {
+  margin: 0;
+  color: #343f3b;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
 .case-media.environment-gallery {
   width: min(100%, 1040px);
 }
@@ -3869,6 +3920,7 @@ figcaption {
   .lane-flow,
   .flow-diagram.process-strip,
   .marine-notes,
+  .reference-grid,
   .case-media.triple > div,
   .case-media.marine-gallery > div,
   .case-media.environment-gallery > div {
@@ -3901,6 +3953,10 @@ figcaption {
   .summary-grid.scope-list .summary-tile {
     grid-template-columns: 1fr;
     gap: 6px;
+  }
+
+  .reference-card dl div {
+    grid-template-columns: 84px minmax(0, 1fr);
   }
 
   .summary-grid.scope-list .summary-tile span {
