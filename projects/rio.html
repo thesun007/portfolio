@@ -43,21 +43,21 @@
       <section class="rio-brief">
         <div class="rio-brief-title">
           <p class="kicker">작업 관점</p>
-          <h2>기존 구조 안에서 안정적으로 개선</h2>
-          <p>요구사항별 영향 범위를 확인하고, 기능 책임과 호출 위치를 분리해 유지보수 가능한 방식으로 반영</p>
+          <h2>기존 구현 방식을 이해한 뒤 확장 방향 결정</h2>
+          <p>프로젝트 중간에 유지보수와 기능개선 작업으로 투입되어, 요구사항과 연결된 기존 기능이 어떻게 동작하는지 먼저 파악한 뒤 수정 방향을 결정</p>
         </div>
         <dl class="rio-principles">
           <div>
-            <dt>요구사항 정리</dt>
-            <dd>기능 목적과 실제 훈련 흐름에서 필요한 동작 기준을 먼저 정리</dd>
+            <dt>구현 방식 파악</dt>
+            <dd>요구사항과 연결된 기존 기능의 동작 흐름, 데이터 저장 방식, 서버/클라이언트 분기, UI 연결 구조를 먼저 확인</dd>
           </div>
           <div>
-            <dt>호환성 유지</dt>
-            <dd>작업 영역이 다른 기능과 충돌하지 않도록 관련 구조를 파악하며 반영</dd>
+            <dt>개선 방향 판단</dt>
+            <dd>구조를 크게 바꾸는 것이 맞는지, 기존 기능을 살려 확장하는 것이 안전한지 영향 범위와 일정 안에서 판단</dd>
           </div>
           <div>
-            <dt>유지보수 고려</dt>
-            <dd>기능 책임과 호출 위치를 분리해 이후 수정이 수월하도록 구현</dd>
+            <dt>상호작용 정리</dt>
+            <dd>기능 간 의존이 커지지 않도록 이벤트 기반으로 변경 신호를 전달하고, 실제 처리는 담당 기능 쪽에 남겨 수정 지점을 제한</dd>
           </div>
         </dl>
       </section>
@@ -98,7 +98,7 @@
             </div>
             <ol class="lane-flow">
               <li><span>01</span><strong>Mimic Pro 적용</strong><p>미완성 자체 Control Rig 기능을 외부 IK 플러그인으로 교체</p></li>
-              <li><span>02</span><strong>멀티플레이 버그 수정</strong><p>권한 분기와 플러그인 함수 호출 위치 조정으로 서버/클라이언트 동작 보정</p></li>
+              <li><span>02</span><strong>멀티플레이 버그 수정</strong><p>서버와 클라이언트에서 실행되어야 할 IK 처리 흐름을 구분해 동작 보정</p></li>
             </ol>
           </article>
           <article class="rio-lane">
@@ -197,7 +197,7 @@
           </div>
           <div class="case-row">
             <span>멀티플레이 버그 수정</span>
-            <p>권한 분기와 플러그인 함수 일부의 호출 위치를 조정해 서버/클라이언트 상황에 맞는 로직이 실행되도록 정리</p>
+            <p>서버가 처리해야 할 로직과 클라이언트 캐릭터에서 실행되어야 할 IK 처리 흐름을 구분해, 멀티플레이 상황에 맞게 동작하도록 정리</p>
           </div>
           <div class="case-row">
             <span>의자 앉기</span>
@@ -212,10 +212,18 @@
           <h2>작업 범위</h2>
           <p>프로그램 전반의 UI 디자인 교체와 기존 기능 로직 호환, UE 5.2에서 UE 5.5로의 마이그레이션 과정에서 발생한 오류와 크래시 추적을 함께 처리</p>
         </div>
+        <figure class="case-media">
+          <img src="../assets/provided/rio-ui-event-dispatcher.png" alt="Rio UI 교체 작업 중 이벤트 기반 위젯 상호작용 정리 화면" />
+          <figcaption>UI 교체 과정에서 선택 상태, 메뉴 변경, FOV 표시처럼 서로 연결된 위젯 동작을 이벤트 기준으로 정리한 예</figcaption>
+        </figure>
         <div class="case-list">
           <div class="case-row">
             <span>UI 교체</span>
-            <p>프로그램 전반의 UI 디자인 교체 항목을 반영하고, 기존 기능 흐름과 충돌하지 않도록 화면 로직과 연결부 호환 작업 진행</p>
+            <p>새 UI 디자인을 반영하면서 기존 기능 흐름을 먼저 확인하고, 기존 로직을 살려 확장할 수 있는 부분과 수정이 필요한 연결부를 구분해 작업</p>
+          </div>
+          <div class="case-row">
+            <span>이벤트 정리</span>
+            <p>위젯 선택, 메뉴 변경, FOV 표시처럼 UI 상태 변화가 여러 기능으로 이어지는 부분은 이벤트 디스패처/델리게이트로 전달하고, 색상·가시성·FOV Mesh 갱신은 담당 함수에서 처리하도록 정리</p>
           </div>
           <div class="case-row">
             <span>UE 5.5 전환</span>

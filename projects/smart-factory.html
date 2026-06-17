@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
@@ -21,9 +21,9 @@
         <div>
           <p class="kicker">2024.10 - 2025.12 / Unreal VR Digital Twin</p>
           <h1>스마트 팩토리 VR 디지털 트윈</h1>
-          <p>회사 자체 VR 멀티버스 클라이언트를 확장해 실제 공장 데이터를 로봇, 아바타, 제조 설비 상태로 동기화한 Unreal 클라이언트 작업</p>
+          <p>회사 자체 VR 메타버스 시스템을 기반으로, 실제 공장 데이터를 여러 사용자가 같은 월드에서 확인할 수 있도록 Unreal 클라이언트 기능을 확장한 작업</p>
           <div class="project-facts">
-            <div><span>역할</span> VR 멀티버스 클라이언트</div>
+            <div><span>역할</span> Unreal 클라이언트 연동</div>
             <div><span>범위</span> 수신 · 파싱 · 상태 관리 · Actor/UI 반영</div>
             <div><span>결과</span> 실제 공장 데이터 연동 및 과제 시연 완료</div>
           </div>
@@ -31,7 +31,7 @@
         <aside class="case-meta">
           <div><span>개발</span><strong>클라이언트 1명 · 서버 1명</strong></div>
           <div><span>사업 기간</span><strong>2024.10 - 2025.12</strong></div>
-          <div><span>플랫폼</span><strong>회사 자체 VR 멀티버스</strong></div>
+          <div><span>기반</span><strong>회사 자체 VR 메타버스 시스템</strong></div>
         </aside>
       </section>
 
@@ -42,8 +42,8 @@
 
       <section class="factory-overview">
         <p class="kicker">전체 구조</p>
-        <h2>공장 데이터가 VR 멀티버스 클라이언트에 반영되는 구조</h2>
-        <p>서버가 실제 공장 raw 데이터를 약속된 JSON 형태로 정제해 송신하고, 기존 VR 멀티버스 클라이언트는 이를 받아 다중 사용자가 확인할 수 있는 디지털 트윈 상태로 반영</p>
+        <h2>공장 데이터가 VR 메타버스 시스템에 반영되는 구조</h2>
+        <p>서버가 실제 공장 raw 데이터를 약속된 JSON 형태로 정제해 송신하고, 회사 자체 VR 메타버스 시스템의 Unreal 클라이언트는 이를 받아 다중 사용자가 확인할 수 있는 디지털 트윈 상태로 반영</p>
         <div class="factory-system-map">
           <div>
             <span>공장</span>
@@ -57,7 +57,7 @@
           </div>
           <div class="owned">
             <span>클라이언트</span>
-            <strong>VR 멀티버스 클라이언트</strong>
+            <strong>VR 메타버스 시스템의 Unreal 클라이언트</strong>
             <p>WebSocket 수신, 파싱, 상태 관리, Actor/UI 반영 담당</p>
           </div>
           <div>
@@ -160,8 +160,8 @@
             <p>기계마다 달라지는 작동시간, 상태, 센서값 데이터를 UI/Actor 상태로 반영</p>
           </div>
           <div class="case-row">
-            <span>플랫폼 확장</span>
-            <p>회사 자체 VR 멀티버스 클라이언트의 AWS 서버 월드 접속 구조를 활용해, 여러 사용자가 같은 월드에서 공장 상태를 확인하는 형태로 확장</p>
+            <span>기존 메타버스 시스템 활용</span>
+            <p>회사 자체 VR 메타버스 시스템의 서버/클라이언트 실행 구조와 AWS 서버 월드 접속 방식을 활용해, 여러 사용자가 같은 월드에서 공장 상태를 확인하는 형태로 확장</p>
           </div>
           <div class="case-row">
             <span>검증</span>
