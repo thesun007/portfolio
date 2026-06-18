@@ -94,7 +94,7 @@
               </div>
               <div class="case-row">
                 <span>제어 프로그램</span>
-                <p>MFC 기반 영상 시스템 제어 프로그램의 설정/통신/화면 관련 수정 작업을 진행하고, 현장 교체 이후 점검과 테스트 대응.</p>
+                <p>MFC 기반 영상 시스템 제어 프로그램에서 통신 문제, 강제 종료, 프레임 드랍 문제를 분석하고, dump 확인과 로깅, 기능 활성/비활성 테스트로 문제 영역을 좁혀가며 수정.</p>
               </div>
             </div>
           </article>
@@ -117,7 +117,8 @@
               <li>자체 IG 기능 테스트 프로그램 개발: 자함 이동, 환경 변화, QTG 등</li>
               <li>요구사항 항목 관련 IG 기능 연구와 적용</li>
               <li>개발 항목 추출, 업무 분배, 버전 관리</li>
-              <li>설계 문서 작성과 테스트/납품 대응</li>
+              <li>설계 문서 작성</li>
+              <li>GitLab/SourceTree 기반 브랜치 병합 및 작동 테스트</li>
             </ul>
             <div class="case-list compact">
               <div class="case-row">
@@ -155,15 +156,15 @@
         <div class="case-list">
           <div class="case-row">
             <span>개발 환경</span>
-            <p>Debug 모드 실행이 되지 않던 DLL 문제를 해결하고, 기존 개발 환경의 제약을 확인하며 빌드/디버깅 환경 개선을 시도.</p>
+            <p>Debug 모드 실행을 막던 구버전 CIGI DLL 문제를 해결해, 기존에는 어려웠던 디버그 기반 분석이 가능하도록 개선.</p>
           </div>
           <div class="case-row">
             <span>문제 분석</span>
-            <p>강제 종료 문제 해결을 위해 dump 파일과 WinDbg 사용법을 확인하고 공유. 크래시 원인을 재현하고 분석하는 절차를 정리.</p>
+            <p>통신 문제, 강제 종료, 프레임 드랍 문제를 추적하기 위해 dump 파일, 로깅, 기능 활성/비활성 테스트로 재현 조건과 문제 영역을 확인.</p>
           </div>
           <div class="case-row">
             <span>멀티스레드</span>
-            <p>volatile/atomic 적용, CriticalSection 대신 RAII 방식의 spinlock 적용, UI 스레드 처리를 위한 PostMessage 적용 등 안정성 개선 작업 진행.</p>
+            <p>필요한 지점에 volatile/atomic을 적용하고, 짧고 자주 호출되는 임계 구역은 기존 CriticalSection 대신 spinlock 기반 lock guard로 교체. UI 스레드 갱신은 PostMessage 방식으로 분리.</p>
           </div>
           <div class="case-row">
             <span>IG 호환</span>
