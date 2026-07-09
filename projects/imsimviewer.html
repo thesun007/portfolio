@@ -43,7 +43,7 @@
         <article class="lead-card dark">
           <span>작업 관점</span>
           <strong>요청사항을 Viewer 구조로 구체화</strong>
-          <p>Physical AI 시뮬레이션 결과를 Unreal에서 확인하기 위한 요청을 바탕으로, 맵 제어, Entity/View 제어, 환경 제어 시스템이 설정과 데이터 흐름에 따라 동작하는 Viewer 구조로 구현</p>
+          <p>Physical AI 시뮬레이션 결과를 Unreal에서 확인하기 위한 요청을 바탕으로, 맵 제어, Entity/View 제어, 환경 제어 기능을 설정과 데이터 흐름에 따라 동작하는 Viewer 구조로 구현</p>
         </article>
         <div class="lead-points">
           <div>
@@ -51,12 +51,12 @@
             <p>맵, Entity, glTF, View 정보를 XML 설정으로 분리해 패키지 이후 확장 가능하도록 구성</p>
           </div>
           <div>
-            <strong>통신 전제 기능 검증</strong>
+            <strong>외부 연동 전 로컬 검증</strong>
             <p>ROS2/ZMQ 실시간 테스트가 제한된 상황에서 로컬 UI와 기록 데이터 재생으로 처리 흐름 검증</p>
           </div>
           <div>
             <strong>시각화 품질 확보</strong>
-            <p>렌더링 옵션, 플러그인, 샘플 파티클 편집을 조합해 차량·기상·해상·수중 표현을 구성</p>
+            <p>렌더링 옵션 조절과 플러그인 활용으로 차량 효과, 라이팅, 기상, 해상/수중 환경 품질을 확보</p>
           </div>
         </div>
       </section>
@@ -74,7 +74,7 @@
           <div>
             <span>02</span>
             <strong>ROS2Bridge 포팅</strong>
-            <p>rclUE를 Windows 기반 Unreal 프로젝트에 맞게 호환 작업하고, 해당 플러그인을 기반으로 ROS2 통신 기능 적용</p>
+            <p>rclUE를 Windows용 Unreal 프로젝트에 맞게 호환 작업하고, 해당 플러그인을 기반으로 ROS2 통신 기능 적용</p>
           </div>
           <div>
             <span>03</span>
@@ -115,7 +115,7 @@
         <div class="case-list">
           <div class="case-row">
             <span>ROS2Bridge</span>
-            <p>Windows 기반 Unreal 프로젝트에서 rclcpp 연동 시 빌드/링크 호환 문제가 발생해 rcl C API를 대신 사용하여 rclUE 플러그인을 Windows용으로 호환 작업. 반복 사용성을 보완하기 위해 매크로 구성을 준비</p>
+            <p>Windows용 Unreal 프로젝트에서 rclcpp 연동 시 빌드/링크 호환 문제가 발생해 rcl C API를 대신 사용하여 rclUE 플러그인을 Windows용으로 호환 작업. 반복 사용성을 보완하기 위해 매크로 구성을 준비</p>
           </div>
           <div class="case-row">
             <span>Node 구조</span>
@@ -127,7 +127,7 @@
           </div>
           <div class="case-row">
             <span>제어 서비스</span>
-            <p>월드/시뮬레이션 제어, Entity 컨트롤, 날씨/환경 컨트롤 서비스를 구성하고 각 메시지를 매니저 클래스에서 처리</p>
+            <p>월드/시뮬레이션 제어, Entity 제어, 날씨/환경 컨트롤 서비스를 구성하고 각 메시지를 매니저 클래스에서 처리</p>
           </div>
           <div class="case-row">
             <span>설정 로드</span>
@@ -152,7 +152,7 @@
         <div class="case-list">
           <div class="case-row">
             <span>ZMQ Telemetry</span>
-            <p>차량 텔레메트리 포맷을 기준으로 이동 샘플 데이터를 파일 재생 방식으로 재현하고, 차량 이동 처리 경로를 검증</p>
+            <p>차량 텔레메트리 포맷을 기준으로 차량 이동 기록 데이터를 파일 재생 방식으로 재현하고, 차량 이동 처리 경로를 검증</p>
           </div>
           <div class="case-row">
             <span>Vehicle VFX</span>
@@ -178,7 +178,7 @@
           </div>
           <div class="case-row">
             <span>렌더링 옵션</span>
-            <p>Lumen, Nanite, VSM 기준 렌더링 품질 옵션을 조정해 시각화 플랫폼에서 필요한 품질과 성능 기준을 확인</p>
+            <p>Lumen, Nanite, VSM과 PostProcessVolume 설정을 기준으로 간접광, 리플렉션, 그림자, AO, 안티앨리어싱 품질과 최적화를 고려해 렌더링 옵션을 조절</p>
           </div>
         </div>
       </section>
