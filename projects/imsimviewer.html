@@ -68,33 +68,33 @@
         <div class="flow-diagram process-strip">
           <div>
             <span>01</span>
-            <strong>설정 로드</strong>
-            <p>XML에서 map, view, entity, glTF 정보를 읽고 런타임 스폰 준비</p>
+            <strong>XML 설정 / 런타임 스폰</strong>
+            <p>맵, View, Entity, glTF 경로를 XML로 정의하고 패키지 후에도 설정 변경으로 시스템 변경/확장 가능하게 구성</p>
           </div>
           <div>
             <span>02</span>
-            <strong>ROS2Bridge</strong>
-            <p>rclUE를 Windows Unreal 환경에 맞게 재구성하고 rcl C API 기반 송수신 구조 준비</p>
+            <strong>ROS2Bridge 포팅</strong>
+            <p>rclUE를 Windows 기반 Unreal 프로젝트에 맞게 호환 작업하고, 해당 플러그인을 기반으로 ROS2 통신 기능 적용</p>
           </div>
           <div>
             <span>03</span>
-            <strong>제어 서비스</strong>
-            <p>월드, 시뮬레이션, Entity, 환경 제어 매니저가 메시지를 처리</p>
+            <strong>제어 매니저 / 서비스</strong>
+            <p>월드 로딩, 시뮬레이션 상태, Entity 스폰, 환경/날씨 제어 요청을 처리하는 매니저 구성</p>
           </div>
           <div>
             <span>04</span>
-            <strong>ZMQ 차량 처리</strong>
-            <p>차량 텔레메트리로 이동, 물리 상태, 주행 효과를 반영</p>
+            <strong>차량 텔레메트리 처리</strong>
+            <p>ZMQ 차량 텔레메트리 포맷을 기준으로 위치, 자세, 속도, 주행 상태를 차량 이동과 VFX에 연결</p>
           </div>
           <div>
             <span>05</span>
-            <strong>환경 시각화</strong>
-            <p>렌더링 옵션, 날씨, 차량 효과, 해상/수중 표현을 Unreal 월드에 반영</p>
+            <strong>환경 / 효과 시각화</strong>
+            <p>렌더링 품질 옵션, 날씨/시간, 차량 주행 효과, 해상/수중 표현을 Unreal 월드에 적용</p>
           </div>
           <div>
             <span>06</span>
-            <strong>로컬 검증</strong>
-            <p>실시간 연동 전 단계에서 UI와 기록 데이터 재생으로 동작 흐름 확인</p>
+            <strong>로컬 기능 검증</strong>
+            <p>실시간 연동 전 단계에서 로컬 UI로 날씨/환경 제어를 확인하고, 차량 이동 기록 데이터 재생으로 차량 이동과 효과 흐름 검증</p>
           </div>
         </div>
       </section>
@@ -115,7 +115,7 @@
         <div class="case-list">
           <div class="case-row">
             <span>ROS2Bridge</span>
-            <p>rclUE 기반 구조를 Windows Unreal 환경에 맞게 재구성. C++ symbol mangling 문제로 rclcpp 대신 rcl C API를 직접 사용하고, 반복 사용성을 보완하기 위해 매크로 구성을 준비</p>
+            <p>Windows 기반 Unreal 프로젝트에서 rclcpp 연동 시 빌드/링크 호환 문제가 발생해 rcl C API를 대신 사용하여 rclUE 플러그인을 Windows용으로 호환 작업. 반복 사용성을 보완하기 위해 매크로 구성을 준비</p>
           </div>
           <div class="case-row">
             <span>Node 구조</span>
