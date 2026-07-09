@@ -724,11 +724,19 @@ figcaption {
 }
 
 .response-layout strong {
-  display: block;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
   margin-bottom: 12px;
   color: var(--ink);
   font-size: 22px;
   line-height: 1.25;
+}
+
+.response-layout strong span {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 850;
 }
 
 .response-layout p {
