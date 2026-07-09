@@ -21,7 +21,7 @@
         <div>
           <p class="kicker">2026.01 - 2026.05 / Unreal Visualization Platform</p>
           <h1>ImSimViewer</h1>
-          <p>상부 요청을 바탕으로 Physical AI 시뮬레이션 결과를 Unreal 월드에서 확인하기 위한 Viewer 구성을 설계하고 구현한 프로젝트. 핵심은 특정 데모 하나가 아니라, 외부 시뮬레이터 데이터가 들어왔을 때 맵, Entity, View, 환경을 설정 기반으로 확장할 수 있는 시각화 플랫폼 구조를 만드는 것</p>
+          <p>Manipulate AI 검증·학습을 위한 가상 환경 구성과 군사 전장 시뮬레이션 기반 기능 준비를 목표로 진행한 Unreal Viewer 프로젝트.<br />외부 시뮬레이터 데이터를 Unreal 월드에 반영하고, 맵, Entity, View, 환경 구성을 설정 기반으로 교체할 수 있는 시각화 플랫폼 구현</p>
           <div class="project-facts">
             <div><span>역할</span> 단독 개발</div>
             <div><span>엔진</span> Unreal C++</div>
@@ -41,9 +41,9 @@
 
       <section class="case-lead flat">
         <article class="lead-card dark">
-          <span>작업 관점</span>
-          <strong>요청사항을 Viewer 구조로 구체화</strong>
-          <p>Physical AI 시뮬레이션 결과를 Unreal에서 확인하기 위한 요청을 바탕으로, 맵 제어, Entity/View 제어, 환경 제어 기능을 설정과 데이터 흐름에 따라 동작하는 Viewer 구조로 구현</p>
+          <span>핵심 구성</span>
+          <strong>Viewer 핵심 구현</strong>
+          <p>맵, Entity, View, 환경 구성을 설정 기반으로 교체하고, ROS2/ZMQ 입력과 매니저 클래스 처리 흐름을 통해 Unreal 월드에 반영</p>
         </article>
         <div class="lead-points">
           <div>
@@ -51,8 +51,8 @@
             <p>맵, Entity, glTF, View 정보를 XML 설정으로 분리해 패키지 이후 확장 가능하도록 구성</p>
           </div>
           <div>
-            <strong>외부 연동 전 로컬 검증</strong>
-            <p>ROS2/ZMQ 실시간 테스트가 제한된 상황에서 로컬 UI와 기록 데이터 재생으로 처리 흐름 검증</p>
+            <strong>통신 / 제어 구조</strong>
+            <p>ROS2Bridge와 ZMQ 입력을 지원하고, 월드·Entity/View·환경 제어 요청을 매니저 클래스에서 처리</p>
           </div>
           <div>
             <strong>시각화 품질 확보</strong>
@@ -69,7 +69,7 @@
           <div>
             <span>01</span>
             <strong>XML 설정 / 런타임 스폰</strong>
-            <p>맵, View, Entity, glTF 경로를 XML로 정의하고 패키지 후에도 설정 변경으로 시스템 변경/확장 가능하게 구성</p>
+            <p>맵, View, Entity, glTF 경로를 XML로 정의해 패키지 후에도 설정 변경만으로 맵/View/Entity 구성을 교체할 수 있도록 구성</p>
           </div>
           <div>
             <span>02</span>
@@ -102,7 +102,6 @@
       <section class="work-lead">
         <p class="kicker">담당 상세</p>
         <h2>구현 상세</h2>
-        <p>ROS2Bridge, 제어 서비스, 차량 효과, 환경 제어, 해상/수중 검증으로 나누어 정리</p>
       </section>
 
       <section class="case-section">
@@ -115,7 +114,7 @@
         <div class="case-list">
           <div class="case-row">
             <span>ROS2Bridge</span>
-            <p>Windows용 Unreal 프로젝트에서 rclcpp 연동 시 빌드/링크 호환 문제가 발생해 rcl C API를 대신 사용하여 rclUE 플러그인을 Windows용으로 호환 작업. 반복 사용성을 보완하기 위해 매크로 구성을 준비</p>
+            <p>Windows용 Unreal 프로젝트에서 rclcpp 연동 시 빌드/링크 호환 문제가 발생해 rcl C API를 대신 사용하여 rclUE 플러그인을 Windows용으로 호환 작업. C API 기반 함수 호출과 사용법이 복잡해 반복되는 코드 블록을 매크로로 묶어 사용</p>
           </div>
           <div class="case-row">
             <span>Node 구조</span>
@@ -169,7 +168,7 @@
             <img src="../assets/imsimviewer-environment.png" alt="ImSimViewer 환경 화면" />
             <img src="../assets/imsimviewer-lighting.png" alt="ImSimViewer 라이팅 샘플" />
           </div>
-          <figcaption>환경 제어 패널, Unreal 월드 반영, 라이팅/반사 품질 확인 화면</figcaption>
+          <figcaption>환경 제어 패널, Unreal 월드 반영, 라이팅/반사 품질 조정 화면</figcaption>
         </figure>
         <div class="case-list">
           <div class="case-row">
@@ -184,8 +183,8 @@
       </section>
 
       <section class="case-section">
-        <h2>해상 / 수중 환경 검증</h2>
-        <p class="case-intro">Unreal Viewer에서 수면, 수중 카메라, 깊이별 분위기, 잠수정 조작, 대형 선박 부력까지 다룰 수 있는지 확인</p>
+        <h2>해상 / 수중 환경 구현</h2>
+        <p class="case-intro">Unreal Viewer에서 수면, 수중 카메라, 깊이별 분위기, 잠수정 조작, 대형 선박 부력 기능을 우선 구현하고 표현 수준을 확인</p>
         <figure class="case-media marine-gallery">
           <div>
             <img src="../assets/provided/imsim-marine-carrier.png" alt="ImSimViewer 대형 선박 해상 검증" />
@@ -205,10 +204,10 @@
           </article>
           <article>
             <h3>잠수정과 부력 검증</h3>
-            <p><strong>잠수정 조종과 센서 연동</strong>을 테스트하고, 부력 컴포넌트와 질량, 선/각속도 damping 값을 조절해 <strong>구축함/항공모함급 선박 모의 테스트</strong> 진행</p>
+            <p><strong>잠수정 조종과 센서 연동</strong>을 테스트하고, 부력 컴포넌트와 질량, 선/각속도 damping 값을 조절해 <strong>대형 선박 부력 테스트</strong> 진행</p>
           </article>
           <article>
-            <h3>확인한 한계</h3>
+            <h3>남은 보정 과제</h3>
             <p>UE Water Plugin 사용 시 <strong>underwater Post Process가 반투명 표현과 light scattering을 가리는 문제</strong>가 있어, 관련 보정은 추가 개발 과제로 정리</p>
           </article>
         </div>
